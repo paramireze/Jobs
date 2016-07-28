@@ -38,6 +38,8 @@ class User implements Serializable {
 		}
 	}
 
+	String toString() { this.username }
+
 	protected void encodePassword() {
 		password = springSecurityService?.passwordEncoder ? springSecurityService.encodePassword(password) : password
 	}
