@@ -29,6 +29,8 @@ class BootStrap {
         baseline << new UserRole(bryan, hr)
         baseline << new UserRole(elizabeth, user)
         baseline << new UserRole(arseny, user)
+
+
         baseline.each {
             println "saving: $it"
             if (!it.save(flush:true)) {
