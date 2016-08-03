@@ -7,6 +7,6 @@ class HomeController {
 
     def index = {
         def users = User.findAll()
-        render users.each
+        render 'hi'
     }
 }
