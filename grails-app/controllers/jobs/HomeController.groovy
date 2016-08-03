@@ -7,6 +7,9 @@ class HomeController {
 
     def index = {
         def users = User.findAll()
-        render 'hi'
+        def jobPosts = JobPost.findAll()
+
+        [jobPosts: jobPosts]
+
     }
 }
