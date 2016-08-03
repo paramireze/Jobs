@@ -6,6 +6,7 @@ class JobPost {
 
     Job job
     Application application
+    EmploymentType employmentType
 
     DateTime start
     DateTime end
@@ -17,6 +18,8 @@ class JobPost {
         active defaultValue: true
     }
 
+    static hasOne = EmploymentType
+
     static constraints = {
         salaryRange nullable: true
         previousJobPost nullable: true
@@ -24,7 +27,10 @@ class JobPost {
         // start(validator: { val, obj -> val < end })  // make sure start date is not after end date
     }
 
-    static belongsTo = Job
+    static belongsTo = [
+            job:Job,
+
+            ]
     static hasMany = Application
 
     String toString() {"$job"}

@@ -7,30 +7,23 @@ class Job {
 
     String title
     Category category
-    String position
-    String description
+
+    //auto timestamp
     DateTime dateCreated
     DateTime lastUpdated
 
-    Job(String title, Category category, String position) {
+    Job(String title, Category category) {
         this()
         this.title = title
         this.category = category
-        this.position = position
-    }
-
-    static UserRole get(long userId, long roleId) {
-        find 'from UserRole where user.id=:personId and role.id=:roleId'
-        [userId: userId, roleId: roleId]
     }
 
     static constraints = {
-        description nullable: true
         replacedBy nullable: true
     }
 
 
-    static hasMany = [jobPost: JobPost]
+    static hasMany = [jobPosts: JobPost]
     static hasOne = Category
-    String toString() {"$position"}
+    String toString() {"$title"}
 }

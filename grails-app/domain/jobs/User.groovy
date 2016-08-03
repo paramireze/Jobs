@@ -2,6 +2,7 @@ package jobs
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
+import org.joda.time.DateTime
 
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
@@ -17,6 +18,11 @@ class User implements Serializable {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+
+
+	// Automatic timestamping
+	DateTime dateCreated
+	DateTime lastUpdated
 
 	User(String username, String password) {
 		this()
@@ -55,5 +61,5 @@ class User implements Serializable {
 		password column: '`password`'
 	}
 
-	static hasMany = [userDocuments: UserDocument]
+	static hasMany = [applications: Application, documents: Document]
 }

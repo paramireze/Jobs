@@ -1,26 +1,36 @@
 package jobs
 
+import org.joda.time.DateTime
+
 import java.time.LocalDate
 
 class Application {
 
-    UserDocument userDocument
+    ApplicationDocument applicationDocument
     User user
     JobPost jobPost
 
-    String status
+    Status status
     LocalDate backgroundCheck
     LocalDate referenceCheck
 
+    // Automatic timestamping
+    DateTime dateCreated
+    DateTime lastUpdated
+
     static mapping = {
-        status defaultValue: 'New'
+        //status defaultValue: 'New'
     }
-    
+
     static constraints = {
         backgroundCheck nullable: true
         referenceCheck nullable: true
+        applicationDocument nullable: true
+        jobPost nullable: true
+        status nullable: false
     }
 
-    static belongsTo = JobPost
-    static hasMany = UserDocument
+    static belongsTo = [jobPost:JobPost, user:User]
+    static hasMany = ApplicationDocument
+    static hasOne = Status
 }
