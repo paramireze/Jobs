@@ -85,6 +85,24 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+// Added by the Joda-Time plugin:
+grails.gorm.default.mapping = {
+    "user-type" type: PersistentDateMidnight, class: DateMidnight
+    "user-type" type: PersistentDateTime, class: DateTime
+    "user-type" type: PersistentDateTimeZoneAsString, class: DateTimeZone
+    "user-type" type: PersistentDurationAsString, class: Duration
+    "user-type" type: PersistentInstantAsMillisLong, class: Instant
+    "user-type" type: PersistentInterval, class: Interval
+    "user-type" type: PersistentLocalDate, class: LocalDate
+    "user-type" type: PersistentLocalDateTime, class: LocalDateTime
+    "user-type" type: PersistentLocalTime, class: LocalTime
+    "user-type" type: PersistentPeriodAsString, class: Period
+    "user-type" type: PersistentTimeOfDay, class: TimeOfDay
+    "user-type" type: PersistentYearMonthDay, class: YearMonthDay
+    "user-type" type: PersistentYears, class: Years
+}
+
+
 environments {
     development {
         grails.logging.jul.usebridge = true
