@@ -6,6 +6,11 @@ class EmploymentType {
 
     static hasMany = Job
 
+    EmploymentType(String type) {
+        this()
+        this.type = type
+    }
+
     static constraints = {
         type nullable: false
     }

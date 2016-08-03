@@ -5,13 +5,7 @@ class Application {
     ApplicationDocument applicationDocument
     User user
     JobPost jobPost
-
     Status status
-
-
-    static mapping = {
-        //status defaultValue: 'New'
-    }
 
     static constraints = {
         applicationDocument nullable: true

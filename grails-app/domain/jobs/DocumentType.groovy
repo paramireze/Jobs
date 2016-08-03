@@ -5,6 +5,11 @@ class DocumentType {
     String type
 
     static hasMany = Document
-    String toString() {"$type"}
 
+    DocumentType(String type) {
+        this()
+        this.type = type
+    }
+
+    String toString() {"$type"}
 }

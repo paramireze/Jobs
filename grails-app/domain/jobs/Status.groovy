@@ -6,8 +6,6 @@ class Status {
     String name
 
 
-    static hasMany = Application
-
     Status(String name) {
         this()
         this.name = name
@@ -16,4 +14,7 @@ class Status {
     static constraints = {
         name nullable: false
     }
+
+    String toString() {"$name"}
+
 }

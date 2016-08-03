@@ -1,7 +1,5 @@
 package jobs
 
-import org.joda.time.DateTime
-
 class JobPost {
 
     Job job
