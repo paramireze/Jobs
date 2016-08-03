@@ -1,5 +1,7 @@
 // locations to search for config files that get merged into the main config;
 // config files can be ConfigSlurper scripts, Java properties files, or classes
+
+
 // in the classpath in ConfigSlurper format
 
 // grails.config.locations = [ "classpath:${appName}-config.properties",
@@ -85,24 +87,6 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
-// Added by the Joda-Time plugin:
-grails.gorm.default.mapping = {
-    "user-type" type: PersistentDateMidnight, class: DateMidnight
-    "user-type" type: PersistentDateTime, class: DateTime
-    "user-type" type: PersistentDateTimeZoneAsString, class: DateTimeZone
-    "user-type" type: PersistentDurationAsString, class: Duration
-    "user-type" type: PersistentInstantAsMillisLong, class: Instant
-    "user-type" type: PersistentInterval, class: Interval
-    "user-type" type: PersistentLocalDate, class: LocalDate
-    "user-type" type: PersistentLocalDateTime, class: LocalDateTime
-    "user-type" type: PersistentLocalTime, class: LocalTime
-    "user-type" type: PersistentPeriodAsString, class: Period
-    "user-type" type: PersistentTimeOfDay, class: TimeOfDay
-    "user-type" type: PersistentYearMonthDay, class: YearMonthDay
-    "user-type" type: PersistentYears, class: Years
-}
-
-
 environments {
     development {
         grails.logging.jul.usebridge = true
@@ -133,6 +117,8 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+
 
 
 // Added by the Spring Security Core plugin:

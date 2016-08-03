@@ -1,9 +1,5 @@
 package jobs
 
-import org.joda.time.DateTime
-
-import java.time.LocalDate
-
 class Application {
 
     ApplicationDocument applicationDocument
@@ -11,20 +7,13 @@ class Application {
     JobPost jobPost
 
     Status status
-    LocalDate backgroundCheck
-    LocalDate referenceCheck
 
-    // Automatic timestamping
-    DateTime dateCreated
-    DateTime lastUpdated
 
     static mapping = {
         //status defaultValue: 'New'
     }
 
     static constraints = {
-        backgroundCheck nullable: true
-        referenceCheck nullable: true
         applicationDocument nullable: true
         jobPost nullable: true
         status nullable: false

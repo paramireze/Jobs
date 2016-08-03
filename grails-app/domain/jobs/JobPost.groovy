@@ -8,8 +8,8 @@ class JobPost {
     Application application
     EmploymentType employmentType
 
-    DateTime start
-    DateTime end
+    String start
+    String end
     String salaryRange
     Boolean active
     JobPost previousJobPost

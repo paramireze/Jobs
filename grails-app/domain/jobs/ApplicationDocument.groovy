@@ -7,7 +7,7 @@ class ApplicationDocument {
 
 
 
-    static belongsTo = [docu: Application]
+    static belongsTo = [application: Application, document: Document]
 
     String toString() {"$type"}
 

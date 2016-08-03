@@ -1,16 +1,10 @@
 package jobs
 
-import org.joda.time.DateTime
-
 class Job {
     Job replacedBy
 
     String title
     Category category
-
-    //auto timestamp
-    DateTime dateCreated
-    DateTime lastUpdated
 
     Job(String title, Category category) {
         this()
