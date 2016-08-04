@@ -13,9 +13,7 @@ class JobPostController {
 
     @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond JobPost.list(params), model: [jobPostInstanceCount: JobPost.count()]
-    }
+        redirect(controller: "home", action: "index")    }
 
     @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def show(JobPost jobPostInstance) {
@@ -54,7 +52,7 @@ class JobPostController {
     }
 
     @Transactional
-]    def update(JobPost jobPostInstance) {
+    def update(JobPost jobPostInstance) {
         if (jobPostInstance == null) {
             notFound()
             return
@@ -77,7 +75,7 @@ class JobPostController {
     }
 
     @Transactional
-]    def delete(JobPost jobPostInstance) {
+    def delete(JobPost jobPostInstance) {
 
         if (jobPostInstance == null) {
             notFound()
