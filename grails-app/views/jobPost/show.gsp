@@ -23,6 +23,7 @@
     <g:if test="${flash.message}">
         <p class="bg-success" role="status">${flash.message}</p>
     </g:if>
+    <g:link controller="application" action="create" params="[application:jobPostInstance.application, jobPostId: jobPostInstance]">Click here to apply</g:link>
     <dl class="dl-horizontal">
         <g:if test="${jobPostInstance?.salaryRange}">
                 <dt id="salaryRange-label" class="property-label padding-right-10px"><g:message code="jobPost.salaryRange.label"
@@ -94,9 +95,9 @@
     </dl>
     <g:form url="[resource: jobPostInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="btn btn-lg btn-default" action="edit" resource="${jobPostInstance}"><g:message code="default.button.edit.label"
+            <g:link class="btn btn-default" action="edit" resource="${jobPostInstance}"><g:message code="default.button.edit.label"
                                                                                         default="Edit"/></g:link>
-            <g:actionSubmit class="btn btn-lg btn-danger" action="delete"
+            <g:actionSubmit class="btn btn-danger" action="delete"
                             value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
         </fieldset>
