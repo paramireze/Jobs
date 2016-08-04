@@ -22,14 +22,9 @@ class JobPost {
         salaryRange nullable: true
         previousJobPost nullable: true
         application nullable: true
-
-
-        // start(validator: { val, obj -> val < end })  // make sure start date is not after end date
     }
 
-    static belongsTo = [
-            job:Job
-            ]
+    static belongsTo = [job:Job]
 
     static hasMany = Application
 
