@@ -1,3 +1,4 @@
+import jobs.Application
 import jobs.Category
 import jobs.DocumentType
 import jobs.EmploymentType
@@ -40,10 +41,10 @@ class BootStrap {
 
         baseline.addAll(fullTime, partTime, lte, project, student, internship)
 
-        User paul = new User('paul', 'password').save()
-        User bryan =  new User('bryan', 'password')
-        User elizabeth =  new User('elizabeth', 'password')
-        User arseny =  new User('arseny', 'password')
+        User paul = new User('paul', 'password', 'paul@gmail.com')
+        User bryan =  new User('bryan', 'password', 'bryan@herzing.edu')
+        User elizabeth =  new User('elizabeth', 'password', 'elizabeth@wisc.edu')
+        User arseny =  new User('arseny', 'password', 'arseny@gmail.com')
 
         baseline.addAll(paul,bryan,elizabeth,arseny)
 
@@ -52,29 +53,32 @@ class BootStrap {
         baseline << new UserRole(elizabeth, user)
         baseline << new UserRole(arseny, user)
 
-        baseline << new Status('rejected')
-        baseline << new Status('candidate')
-        baseline << new Status('finalist')
-        baseline << new Status('send offer')
-        baseline << new Status('confirmed offer')
+        def statusNew = new Status('new')
+        def statusRejected = new Status('rejected')
+        def statusCandidate = new Status('candidate')
+        def statusFinalist = new Status('finalist')
+        def statusOffer = new Status('send offer')
+        def statusConfirmed = new Status('confirmed offer')
+
+        baseline.addAll(statusNew, statusRejected, statusCandidate, statusFinalist, statusOffer, statusConfirmed)
 
         baseline << new DocumentType('Resume')
         baseline << new DocumentType('Coverletter')
         baseline << new DocumentType('Thank You Letter')
         baseline << new DocumentType('Follow Up')
 
-        Job softwareDeveloper = new Job('Software Developer', informationTechnology)
-        Job helpDesk = new Job('Help Desk', informationTechnology)
-        Job financialSpec = new Job('Finance Specialist', finance)
-        Job humanResourceDirector = new Job('Human Resource Director', humanResources)
-        Job nurse = new Job('Nurse', healthCare)
-        Job residentAssistant = new Job('Resident Assistant', healthCare)
+        Job jobSoftWareDeveloper = new Job('Software Developer', informationTechnology)
+        Job jobHelpDesk = new Job('Help Desk', informationTechnology)
+        Job jobFinanceSpecialist = new Job('Finance Specialist', finance)
+        Job jobHumanResourceDirector = new Job('Human Resource Director', humanResources)
+        Job jobNurse = new Job('Nurse', healthCare)
+        Job jobResidentAssistant = new Job('Resident Assistant', healthCare)
 
-        baseline.addAll(softwareDeveloper, helpDesk, financialSpec, humanResourceDirector, nurse, residentAssistant)
+        baseline.addAll(jobSoftWareDeveloper, jobHelpDesk, jobFinanceSpecialist, jobHumanResourceDirector, jobNurse, jobResidentAssistant)
 
         //job, employmentType, start, end, salaryRange, active (bool)
         JobPost softwareDev = new JobPost(
-                job: softwareDeveloper,
+                job: jobSoftWareDeveloper,
                 employmentType: fullTime,
                 postStart: 'July 01, 2016',
                 postEnd: 'Sept 01, 2016',
@@ -82,8 +86,8 @@ class BootStrap {
                 active: true
         )
 
-        JobPost support = new JobPost(
-                job:helpDesk,
+        JobPost helpDeskSupport = new JobPost(
+                job:jobHelpDesk,
                 employmentType: partTime,
                 postEnd: 'Oct 01, 2016',
                 postStart: 'June 01, 2016',
@@ -92,7 +96,7 @@ class BootStrap {
         )
 
         JobPost hrStaff = new JobPost(
-                job:humanResourceDirector,
+                job:jobHumanResourceDirector,
                 employmentType: fullTime,
                 postEnd: 'Oct 01, 2016',
                 postStart: 'June 01, 2016',
@@ -101,15 +105,16 @@ class BootStrap {
         )
 
         JobPost nurseProfessional = new JobPost(
-                job:nurse,
+                job:jobNurse,
                 employmentType: fullTime,
                 postEnd: 'Oct 01, 2016',
                 postStart: 'June 01, 2016',
                 salaryRange: '44,000 - 95,000',
                 active: true
         )
-        JobPost residentAss = new JobPost(
-                job:residentAssistant,
+
+        JobPost residentAssistant = new JobPost(
+                job:jobResidentAssistant,
                 employmentType: partTime,
                 postEnd: 'Oct 11, 2016',
                 postStart: 'June 21, 2016',
@@ -117,7 +122,16 @@ class BootStrap {
                 active: true
         )
 
-        baseline.addAll(softwareDev, support, softwareDev,hrStaff, nurseProfessional, residentAss)
+        baseline.addAll(softwareDev, helpDeskSupport, softwareDev,hrStaff, nurseProfessional, residentAssistant)
+
+        Application paulsApplication = new Application(paul, softwareDev, statusNew)
+        Application paulsApplication2 = new Application(paul, helpDeskSupport, statusConfirmed)
+        Application bryanApplication = new Application(bryan, nurseProfessional, statusOffer)
+        Application bryanApplication2 = new Application(bryan, residentAssistant, statusRejected)
+        Application bryanApplication3 = new Application(bryan, hrStaff, statusNew)
+
+        baseline.addAll(paulsApplication, paulsApplication2, bryanApplication, bryanApplication2, bryanApplication3)
+
 
         baseline.each {
             println "saving: $it"
