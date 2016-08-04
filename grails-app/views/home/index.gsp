@@ -9,30 +9,34 @@
 <body>
 <h1>Welcome to our Website</h1>
 <p>Please browse our site to find our current job listings.</p>
+<g:each var="category" in="${categories}">
 
-<table class="table table-bordered table-hover table-striped table-dataTable">
-    <thead>
-    <tr>
-        <th>Job Position</th>
-        <th>Employement Type</th>
-        <th>Salary</th>
-        <th>Post End Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    <g:each var="jobPost" in="${jobPosts}">
+    <h2>${category}</h2>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
         <tr>
-            <td>
-                <g:link controller="jobPost" action="show" params="[id: jobPost.id]">${jobPost.job}</g:link>
-            </td>
-            <td>${jobPost.employmentType}</td>
-            <td>${jobPost.salaryRange}</td>
-            <td>${jobPost.postEnd}</td>
+            <th>Job Position</th>
+            <th>Employement Type</th>
+            <th>Salary</th>
+            <th>Post End Date</th>
         </tr>
-    </g:each>
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+        <g:each var="jobPost" in="${jobPosts}">
+            <g:if test="${category.toString() == jobPost.job.category.toString()}">
+                <tr>
+                    <td>
+                        <g:link controller="jobPost" action="show" params="[id: jobPost.id]">${jobPost.job}</g:link>
+                    </td>
+                    <td>${jobPost.employmentType}</td>
+                    <td>${jobPost.salaryRange}</td>
+                    <td>${jobPost.postEnd}</td>
+                </tr>
+            </g:if>
+        </g:each>
+        </tbody>
+    </table>
+</g:each>
 %{--<sec:ifLoggedIn>
     <sec:ifAllGranted roles="ROLE_HR">
         <div>HR</div>

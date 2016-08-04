@@ -8,8 +8,9 @@ class HomeController {
     def index = {
         def users = User.findAll()
         def jobPosts = JobPost.findAll()
+        List categories = Category.findAll()
 
-        [jobPosts: jobPosts]
+        [jobPosts: jobPosts, categories: categories]
 
     }
 }
