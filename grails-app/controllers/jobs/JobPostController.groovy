@@ -15,7 +15,7 @@ class JobPostController {
     def index(Integer max) {
         redirect(controller: "home", action: "index")    }
 
-    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
+    @Secured("permitAll")
     def show(JobPost jobPostInstance) {
         respond jobPostInstance
     }
