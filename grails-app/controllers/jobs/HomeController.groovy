@@ -8,7 +8,7 @@ class HomeController {
     def index = {
         def users = User.findAll()
         def jobPosts = JobPost.findAll()
-        List categories = Category.findAll()
+        List categories = jobPosts.job.category.unique()
 
         [jobPosts: jobPosts, categories: categories]
 
