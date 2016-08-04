@@ -20,7 +20,7 @@ class Application {
         this.status = status
     }
 
-    static belongsTo = [jobPost:JobPost, user:User]
+    static belongsTo = [user:User]
     static hasMany = ApplicationDocument
     static hasOne = Status
 
