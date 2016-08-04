@@ -22,7 +22,9 @@
     <tbody>
     <g:each var="jobPost" in="${jobPosts}">
         <tr>
-            <td>${jobPost.job}</td>
+            <td>
+                <g:link controller="jobPost" action="show" params="[id: jobPost.id]">${jobPost.job}</g:link>
+            </td>
             <td>${jobPost.employmentType}</td>
             <td>${jobPost.salaryRange}</td>
             <td>${jobPost.postEnd}</td>
