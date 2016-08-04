@@ -8,116 +8,90 @@
 </head>
 
 <body>
-<a href="#show-jobPost" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
-                                                              default="Skip to content&hellip;"/></a>
-
-<div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                              args="[entityName]"/></g:link></li>
-    </ul>
-</div>
-
 <div id="show-jobPost" class="content scaffold-show" role="main">
-    <h1><g:message code="default.show.label" args="[entityName]"/></h1>
+    <h1>
+        <sec:ifLoggedIn>
+            <sec:ifAllGranted roles="ROLE_HR">
+                <g:link controller="job" action="show"
+                        id="${jobPostInstance?.job?.id}">${jobPostInstance?.job?.encodeAsHTML()}</g:link>
+            </sec:ifAllGranted>
+            <sec:ifAllGranted roles="ROLE_USER">
+                ${jobPostInstance?.job?.encodeAsHTML()}
+            </sec:ifAllGranted>
+        </sec:ifLoggedIn>
+        </h1>
     <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
+        <p class="bg-success" role="status">${flash.message}</p>
     </g:if>
-    <ol class="property-list jobPost">
-
+    <dl class="dl-horizontal">
         <g:if test="${jobPostInstance?.salaryRange}">
-            <li class="fieldcontain">
-                <span id="salaryRange-label" class="property-label"><g:message code="jobPost.salaryRange.label"
-                                                                               default="Salary Range"/></span>
+                <dt id="salaryRange-label" class="property-label padding-right-10px"><g:message code="jobPost.salaryRange.label"
+                                                                               default="Salary Range"/></dt>
 
-                <span class="property-value" aria-labelledby="salaryRange-label"><g:fieldValue bean="${jobPostInstance}"
-                                                                                               field="salaryRange"/></span>
+                <dl class="property-value" aria-labelledby="salaryRange-label"><g:fieldValue bean="${jobPostInstance}"
+                                                                                               field="salaryRange"/></dl>
 
-            </li>
         </g:if>
 
         <g:if test="${jobPostInstance?.previousJobPost}">
-            <li class="fieldcontain">
-                <span id="previousJobPost-label" class="property-label"><g:message code="jobPost.previousJobPost.label"
-                                                                                   default="Previous Job Post"/></span>
+                <dt id="previousJobPost-label" class="property-label padding-right-10px"><g:message code="jobPost.previousJobPost.label"
+                                                                                   default="Previous Job Post"/></dt>
 
-                <span class="property-value" aria-labelledby="previousJobPost-label"><g:link controller="jobPost"
+                <dl class="property-value" aria-labelledby="previousJobPost-label"><g:link controller="jobPost"
                                                                                              action="show"
-                                                                                             id="${jobPostInstance?.previousJobPost?.id}">${jobPostInstance?.previousJobPost?.encodeAsHTML()}</g:link></span>
+                                                                                             id="${jobPostInstance?.previousJobPost?.id}">${jobPostInstance?.previousJobPost?.encodeAsHTML()}</g:link></dl>
 
-            </li>
         </g:if>
-
         <g:if test="${jobPostInstance?.application}">
-            <li class="fieldcontain">
-                <span id="application-label" class="property-label"><g:message code="jobPost.application.label"
-                                                                               default="Application"/></span>
+                <dt id="application-label" class="property-label padding-right-10px"><g:message code="jobPost.application.label"
+                                                                               default="Application"/></dt>
 
-                <span class="property-value" aria-labelledby="application-label"><g:link controller="application"
+                <dl class="property-value" aria-labelledby="application-label"><g:link controller="application"
                                                                                          action="show"
-                                                                                         id="${jobPostInstance?.application?.id}">${jobPostInstance?.application?.encodeAsHTML()}</g:link></span>
-
-            </li>
+                                                                                         id="${jobPostInstance?.application?.id}">${jobPostInstance?.application?.encodeAsHTML()}</g:link></dl>
         </g:if>
-
         <g:if test="${jobPostInstance?.active}">
-            <li class="fieldcontain">
-                <span id="active-label" class="property-label"><g:message code="jobPost.active.label"
-                                                                          default="Active"/></span>
+                <dt id="active-label" class="property-label"><g:message code="jobPost.active.label"
+                                                                          default="Active"/></dt>
 
-                <span class="property-value" aria-labelledby="active-label"><g:formatBoolean
-                        boolean="${jobPostInstance?.active}"/></span>
-
-            </li>
+                <dl class="property-value" aria-labelledby="active-label"><g:formatBoolean
+                        boolean="${jobPostInstance?.active}"/></dl>
         </g:if>
-
         <g:if test="${jobPostInstance?.employmentType}">
-            <li class="fieldcontain">
-                <span id="employmentType-label" class="property-label"><g:message code="jobPost.employmentType.label"
-                                                                                  default="Employment Type"/></span>
+                <dt id="employmentType-label" class="property-label"><g:message code="jobPost.employmentType.label"
+                                                                                  default="Employment Type"/></dt>
 
-                <span class="property-value" aria-labelledby="employmentType-label"><g:link controller="employmentType"
+                <dl class="property-value" aria-labelledby="employmentType-label"><g:link controller="employmentType"
                                                                                             action="show"
-                                                                                            id="${jobPostInstance?.employmentType?.id}">${jobPostInstance?.employmentType?.encodeAsHTML()}</g:link></span>
+                                                                                            id="${jobPostInstance?.employmentType?.id}">${jobPostInstance?.employmentType?.encodeAsHTML()}</g:link></dl>
 
-            </li>
         </g:if>
 
         <g:if test="${jobPostInstance?.job}">
-            <li class="fieldcontain">
-                <span id="job-label" class="property-label"><g:message code="jobPost.job.label" default="Job"/></span>
+                <dt id="job-label" class="property-label"><g:message code="jobPost.job.label" default="Job"/></dt>
 
-                <span class="property-value" aria-labelledby="job-label"><g:link controller="job" action="show"
-                                                                                 id="${jobPostInstance?.job?.id}">${jobPostInstance?.job?.encodeAsHTML()}</g:link></span>
-
-            </li>
+                <dl class="property-value" aria-labelledby="job-label"><g:link controller="job" action="show"
+                                                                                 id="${jobPostInstance?.job?.id}">${jobPostInstance?.job?.encodeAsHTML()}</g:link></dl>
         </g:if>
 
         <g:if test="${jobPostInstance?.postEnd}">
-            <li class="fieldcontain">
-                <span id="postEnd-label" class="property-label"><g:message code="jobPost.postEnd.label"
-                                                                           default="Post End"/></span>
+                <dt id="postEnd-label" class="property-label"><g:message code="jobPost.postEnd.label"
+                                                                           default="Post End"/></dt>
 
-                <span class="property-value" aria-labelledby="postEnd-label"><g:fieldValue bean="${jobPostInstance}"
-                                                                                           field="postEnd"/></span>
+                <dl class="property-value" aria-labelledby="postEnd-label"><g:fieldValue bean="${jobPostInstance}"
+                                                                                           field="postEnd"/></dl>
 
-            </li>
         </g:if>
 
         <g:if test="${jobPostInstance?.postStart}">
-            <li class="fieldcontain">
-                <span id="postStart-label" class="property-label"><g:message code="jobPost.postStart.label"
-                                                                             default="Post Start"/></span>
+                <dt id="postStart-label" class="property-label"><g:message code="jobPost.postStart.label"
+                                                                             default="Post Start"/>: </dt>
 
-                <span class="property-value" aria-labelledby="postStart-label"><g:fieldValue bean="${jobPostInstance}"
-                                                                                             field="postStart"/></span>
+                <dl class="property-value" aria-labelledby="postStart-label"><g:fieldValue bean="${jobPostInstance}"
+                                                                                             field="postStart"/></dl>
 
-            </li>
         </g:if>
-
-    </ol>
+    </dl>
     <g:form url="[resource: jobPostInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${jobPostInstance}"><g:message code="default.button.edit.label"
