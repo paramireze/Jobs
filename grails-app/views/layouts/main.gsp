@@ -27,14 +27,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Life Line Solutions Job Postings</a>
+				<g:link controller="home" action="index" class="navbar-brand">Life Line Solutions Job Postings</g:link>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><g:link controller="home" action="index">List All Jobs</g:link></li>
-					<li><a href="#">List Jobs</a></li>
+					<li><g:link controller="application" action="index">My Applications</g:link></li>
 
 				</ul>
 
