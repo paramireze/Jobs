@@ -24,8 +24,6 @@ class JobPost {
         application nullable: true
     }
 
-    static belongsTo = [job:Job]
-
     static hasMany = Application
 
     String toString() {"$job"}
