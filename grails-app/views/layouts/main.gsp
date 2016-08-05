@@ -33,14 +33,19 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><g:link controller="home" action="index">List All Jobs</g:link></li>
-					<li><g:link controller="application" action="index">My Applications</g:link></li>
+					<li class="active"><g:link controller="home" action="index">List Jobs</g:link></li>
+					<li><g:link controller="application" action="index">Show Applications</g:link></li>
 
 				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Account</a></li>
-
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <sec:ifLoggedIn >
+                            <g:link controller="logout" action="index">logout</g:link>
+                        </sec:ifLoggedIn>
+                        <sec:ifNotLoggedIn>
+                            <g:link controller="login" action="index">Login</g:link>
+                        </sec:ifNotLoggedIn>
+                    </li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
