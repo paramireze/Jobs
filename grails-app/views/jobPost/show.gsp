@@ -62,17 +62,28 @@
                 <dt id="employmentType-label" class="property-label"><g:message code="jobPost.employmentType.label"
                                                                                   default="Employment Type"/></dt>
 
-                <dl class="property-value" aria-labelledby="employmentType-label"><g:link controller="employmentType"
-                                                                                            action="show"
-                                                                                            id="${jobPostInstance?.employmentType?.id}">${jobPostInstance?.employmentType?.encodeAsHTML()}</g:link></dl>
+                <dl class="property-value" aria-labelledby="employmentType-label">
+                    <sec:ifAllGranted roles="ROLE_HR">
+                        <g:link controller="employmentType" action="show" id="${jobPostInstance?.employmentType?.id}">${jobPostInstance?.employmentType?.encodeAsHTML()}</g:link>
+                    </sec:ifAllGranted>
+                    <sec:ifNotGranted roles="ROLE_HR">
+                        ${jobPostInstance?.employmentType?.encodeAsHTML()}
+                    </sec:ifNotGranted>
+                </dl>
 
         </g:if>
 
         <g:if test="${jobPostInstance?.job}">
                 <dt id="job-label" class="property-label"><g:message code="jobPost.job.label" default="Job"/></dt>
 
-                <dl class="property-value" aria-labelledby="job-label"><g:link controller="job" action="show"
-                                                                                 id="${jobPostInstance?.job?.id}">${jobPostInstance?.job?.encodeAsHTML()}</g:link></dl>
+                <dl class="property-value" aria-labelledby="job-label">
+                    <sec:ifAllGranted roles="ROLE_HR">
+                        <g:link controller="job" action="show" id="${jobPostInstance?.job?.id}">${jobPostInstance?.job?.encodeAsHTML()}</g:link>
+                    </sec:ifAllGranted>
+                    <sec:ifNotGranted roles="ROLE_HR">
+                        ${jobPostInstance?.job?.encodeAsHTML()}
+                    </sec:ifNotGranted>
+                </dl>
         </g:if>
 
         <g:if test="${jobPostInstance?.postEnd}">
@@ -93,15 +104,20 @@
 
         </g:if>
     </dl>
-    <g:form url="[resource: jobPostInstance, action: 'delete']" method="DELETE">
-        <fieldset class="buttons">
-            <g:link class="btn btn-default" action="edit" resource="${jobPostInstance}"><g:message code="default.button.edit.label"
-                                                                                        default="Edit"/></g:link>
-            <g:actionSubmit class="btn btn-danger" action="delete"
-                            value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-        </fieldset>
-    </g:form>
+
+
+
+    <sec:ifAllGranted roles="ROLE_HR">
+        <g:form url="[resource: jobPostInstance, action: 'delete']" method="DELETE">
+            <fieldset class="buttons">
+                <g:link class="btn btn-default" action="edit" resource="${jobPostInstance}"><g:message code="default.button.edit.label"
+                                                                                            default="Edit"/></g:link>
+                <g:actionSubmit class="btn btn-danger" action="delete"
+                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+            </fieldset>
+        </g:form>
+    </sec:ifAllGranted>
 </div>
 </body>
 </html>
