@@ -8,7 +8,7 @@
 
 <body>
 <div id="create-application" class="content scaffold-create" role="main">
-    <h1>Apply for job</h1>
+    <div class="jumbotron"><h1>Apply for ${applicationInstance.jobPost}</h1></div>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
@@ -20,13 +20,10 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form url="[resource: applicationInstance, action: 'save']">
-        <fieldset class="form">
+    <g:form class="form-horizontal" url="[resource: applicationInstance, action: 'save']">
             <g:render template="form"/>
-        </fieldset>
-        <fieldset class="buttons">
-            <g:submitButton name="create" class="save"
-                            value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+            <fieldset class="buttons">
+            <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
         </fieldset>
     </g:form>
 </div>

@@ -7,8 +7,10 @@
 </head>
 
 <body>
-<h1>Welcome to our Website</h1>
-<p>Please browse our site to find our current job listings.</p>
+<div class="jumbotron">
+    <h1>Welcome to our Website</h1>
+    <p>Please browse our site to find our current job listings.</p>
+</div>
 <g:each var="category" in="${categories}">
 
     <h2>${category}</h2>

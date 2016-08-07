@@ -23,7 +23,7 @@
     <g:if test="${flash.message}">
         <p class="bg-success" role="status">${flash.message}</p>
     </g:if>
-    <g:link controller="application" action="create" params="[application:jobPostInstance.application, jobPostId: jobPostInstance]">Click here to apply</g:link>
+    <g:link controller="application" action="create" params="[application:jobPostInstance.application, jobPostId: jobPostInstance.id]"><img width="100px" src="${resource(dir:"images", file: "ApplyOnline.png") }" /></g:link>
     <dl class="dl-horizontal">
         <g:if test="${jobPostInstance?.salaryRange}">
                 <dt id="salaryRange-label" class="property-label padding-right-10px"><g:message code="jobPost.salaryRange.label"
