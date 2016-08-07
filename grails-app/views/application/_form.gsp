@@ -1,7 +1,32 @@
 <%@ page import="jobs.Application" %>
 
 
-
+<div class="form-group">
+    <label for="inputName" class="col-sm-2 control-label">Name</label>
+    <div class="col-sm-10">
+        <input type="text" disabled class="form-control" value="${user}" id="inputName" placeholder="Name">
+    </div>
+</div>
+<div class="form-group">
+    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+        <input type="email" disabled class="form-control" id="inputEmail" value="${user.email}" placeholder="Email">
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Remember me
+            </label>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+</div>
 <div class="form-group fieldcontain ${hasErrors(bean: applicationInstance, field: 'applicationDocument', 'error')} ">
     <label for="applicationDocument">
         <g:message code="application.applicationDocument.label" default="Application Document"/>
@@ -32,14 +57,6 @@
               value="${applicationInstance?.status?.id}" class="form-control many-to-one"/>
 
 </div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: applicationInstance, field: 'user', 'error')} required">
-    <label for="user">
-        <g:message code="application.user.label" default="User"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="user" name="user.id" from="${jobs.User.list()}" optionKey="id" required=""
-              value="${applicationInstance?.user?.id}" class="form-control many-to-one"/>
-
 </div>
+
 

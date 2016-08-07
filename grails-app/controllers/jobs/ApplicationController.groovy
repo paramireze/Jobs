@@ -1,5 +1,7 @@
 package jobs
 
+import grails.converters.JSON
+import grails.converters.XML
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
@@ -9,11 +11,16 @@ import grails.transaction.Transactional
 @Secured("hasRole('ROLE_HR')")
 class ApplicationController {
 
+    def springSecurityService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        User user = springSecurityService.currentUser
+        // left off here. Check roles
+        def application = Application.findByUser(user)
         def applications = Application.list()
         respond Application.list(params), model: [applicationInstanceCount: Application.count()]
     }
@@ -23,7 +30,17 @@ class ApplicationController {
     }
 
     def create() {
-        respond new Application(params)
+        User user = springSecurityService.currentUser
+        Application application = new Application(params)
+        application.jobPost = JobPost.get(params.jobPostId)
+        def listObject =  [applicationInstance: application, user: user]
+
+        withFormat {
+            // The view needs more fluff, other responses just get the data
+            html { listObject }
+            json { render list as JSON }
+            xml { render list as XML }
+        }
     }
 
     @Transactional
