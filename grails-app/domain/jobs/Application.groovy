@@ -2,13 +2,11 @@ package jobs
 
 class Application {
 
-    ApplicationDocument applicationDocument
     User user
     JobPost jobPost
     Status status
 
     static constraints = {
-        applicationDocument nullable: true
         jobPost nullable: false
         status nullable: false
     }
