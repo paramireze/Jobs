@@ -34,6 +34,8 @@ class ApplicationController {
         Application application = new Application(params)
         application.jobPost = JobPost.get(params.jobPostId)
         def listObject =  [applicationInstance: application, user: user]
+        Document document = new Document()
+        document.user = user
 
         withFormat {
             // The view needs more fluff, other responses just get the data

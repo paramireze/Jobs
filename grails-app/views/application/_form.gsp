@@ -14,49 +14,24 @@
     </div>
 </div>
 <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <div class="checkbox">
-            <label>
-                <input type="checkbox"> Remember me
-            </label>
-        </div>
+    <label for="inputEmail" class="col-sm-2 control-label">Resume</label>
+    <div class="col-sm-10">
+        <g:select name="Document"
+                  from="${user.documents}" />
+        <g:link action="index">Add Resume</g:link>
     </div>
 </div>
 <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Sign in</button>
+    <label for="inputEmail" class="col-sm-2 control-label">Cover Letter</label>
+    <div class="col-sm-10">
+        <g:select name="Document"
+                  from="${user.documents}" />
+        <g:link action="index">Add Cover Letter</g:link>
     </div>
 </div>
-<div class="form-group fieldcontain ${hasErrors(bean: applicationInstance, field: 'applicationDocument', 'error')} ">
-    <label for="applicationDocument">
-        <g:message code="application.applicationDocument.label" default="Application Document"/>
-
-    </label>
-    <g:select id="applicationDocument" name="applicationDocument.id" from="${jobs.ApplicationDocument.list()}"
-              optionKey="id" value="${applicationInstance?.applicationDocument?.id}" class="form-control many-to-one"
-              noSelection="['null': '']"/>
-
+<div class="form-group">
+    <label for="inputEmail" class="col-sm-2 control-label">Manually Enter Resume</label>
+    <div class="col-sm-10">
+        <g:textArea name="myField" value="myValue" rows="5" cols="40"/>
+    </div>
 </div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: applicationInstance, field: 'jobPost', 'error')} required">
-    <label for="jobPost">
-        <g:message code="application.jobPost.label" default="Job Post"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="jobPost" name="jobPost.id" from="${jobs.JobPost.list()}" optionKey="id" required=""
-              value="${applicationInstance?.jobPost?.id}" class="form-control many-to-one"/>
-
-</div>
-
-<div class="form-group fieldcontain ${hasErrors(bean: applicationInstance, field: 'status', 'error')} required">
-    <label for="status">
-        <g:message code="application.status.label" default="Status"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="status" name="status.id" from="${jobs.Status.list()}" optionKey="id" required=""
-              value="${applicationInstance?.status?.id}" class="form-control many-to-one"/>
-
-</div>
-</div>
-
-
