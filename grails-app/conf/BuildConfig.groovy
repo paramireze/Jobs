@@ -71,6 +71,7 @@ grails.project.dependency.resolution = {
         compile "org.grails.plugins:spring-security-core:2.0.0"
         compile "org.grails.plugins:twitter-bootstrap:3.3.4"
         compile "org.grails.plugins:joda-time:1.5"
+        compile ":ckeditor:4.5.4.1"
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
         //compile ":less-asset-pipeline:1.10.0"

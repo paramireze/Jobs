@@ -32,6 +32,8 @@
 <div class="form-group">
     <label for="inputEmail" class="col-sm-2 control-label">Manually Enter Resume</label>
     <div class="col-sm-10">
-        <g:textArea name="myField" value="myValue" rows="5" cols="40"/>
+        <ckeditor:editor name="myeditor" height="400px" width="80%">
+            asdf
+        </ckeditor:editor>
     </div>
 </div>
