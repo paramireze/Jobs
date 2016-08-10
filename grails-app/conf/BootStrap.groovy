@@ -1,5 +1,6 @@
 import jobs.Application
 import jobs.Category
+import jobs.Document
 import jobs.DocumentType
 import jobs.EmploymentType
 import jobs.Job
@@ -62,10 +63,18 @@ class BootStrap {
 
         baseline.addAll(statusNew, statusRejected, statusCandidate, statusFinalist, statusOffer, statusConfirmed)
 
-        baseline << new DocumentType('Resume')
-        baseline << new DocumentType('Coverletter')
-        baseline << new DocumentType('Thank You Letter')
-        baseline << new DocumentType('Follow Up')
+        def documentResume = new DocumentType('Resume')
+        def documentCoverLetter = new DocumentType('Coverletter')
+        def documentThankYou = new DocumentType('Thank You Letter')
+        def documentFollowUp = new DocumentType('Follow Up')
+
+        baseline.addAll(documentResume, documentCoverLetter, documentThankYou, documentFollowUp)
+
+        baseline << new Document(documentResume, paul, 'ITResume', 'this is the body of the entire resume')
+        baseline << new Document(documentCoverLetter, paul, 'ITCoverLetter', 'this is the body of the entire resume number two')
+
+
+
 
         Job jobSoftWareDeveloper = new Job('Software Developer', informationTechnology)
         Job jobHelpDesk = new Job('Help Desk', informationTechnology)
