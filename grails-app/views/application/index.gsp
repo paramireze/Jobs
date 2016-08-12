@@ -31,7 +31,7 @@
         <g:each in="${applicationInstanceList}" status="i" var="applicationInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-                <td><g:link controller="application" action="edit" params="[id: applicationInstance.id]">${fieldValue(bean: applicationInstance, field: "jobPost")}</g:link></td>
+                <td><g:link controller="application" action="show" params="[id: applicationInstance.id]">${fieldValue(bean: applicationInstance, field: "jobPost")}</g:link></td>
 
                 <td>${fieldValue(bean: applicationInstance, field: "status")}</td>
 
