@@ -63,17 +63,19 @@ class BootStrap {
 
         baseline.addAll(statusNew, statusRejected, statusCandidate, statusFinalist, statusOffer, statusConfirmed)
 
-        def documentResume = new DocumentType('Resume')
-        def documentCoverLetter = new DocumentType('Coverletter')
-        def documentThankYou = new DocumentType('Thank You Letter')
-        def documentFollowUp = new DocumentType('Follow Up')
+        def documentTypeResume = new DocumentType('Resume')
+        def documentTypeCoverLetter = new DocumentType('Coverletter')
+        def documentTypeThankYou = new DocumentType('Thank You Letter')
+        def documentTypeFollowUp = new DocumentType('Follow Up')
 
-        baseline.addAll(documentResume, documentCoverLetter, documentThankYou, documentFollowUp)
+        baseline.addAll(documentTypeResume, documentTypeCoverLetter, documentTypeThankYou, documentTypeFollowUp)
 
-        baseline << new Document(documentResume, paul, 'ITResume', 'this is the body of the entire resume')
-        baseline << new Document(documentCoverLetter, paul, 'ITCoverLetter', 'this is the body of the entire resume number two')
+        def paulDocumentITResume = new Document(documentTypeResume, paul, 'ITResume', 'this is the body of the entire resume')
+        def paulDocumentHelpDeskResume = new Document(documentTypeResume, paul, 'HelpDeskResume', 'this is the body of the entire resume')
+        def paulDocumentITCoverLetter= new Document(documentTypeCoverLetter, paul, 'ITCoverLetter', 'this is the body of the entire resume number two')
+        def paulDocumentHelpDeskCoverLetter = new Document(documentTypeCoverLetter, paul, 'HelpDeskCoverLetter', 'this is the body of the entire resume number two')
 
-
+        baseline.addAll(paulDocumentITResume, paulDocumentHelpDeskResume, paulDocumentITCoverLetter, paulDocumentHelpDeskCoverLetter)
 
 
         Job jobSoftWareDeveloper = new Job('Software Developer', informationTechnology)
@@ -133,13 +135,13 @@ class BootStrap {
 
         baseline.addAll(softwareDev, helpDeskSupport, softwareDev,hrStaff, nurseProfessional, residentAssistant)
 
-        Application paulsApplication = new Application(paul, softwareDev, statusNew)
-        Application paulsApplication2 = new Application(paul, helpDeskSupport, statusConfirmed)
-        Application bryanApplication = new Application(bryan, nurseProfessional, statusOffer)
-        Application bryanApplication2 = new Application(bryan, residentAssistant, statusRejected)
-        Application bryanApplication3 = new Application(bryan, hrStaff, statusNew)
+        Application paulsITApplication = new Application(paul, softwareDev, paulDocumentITResume, paulDocumentITCoverLetter, statusNew)
+        Application paulsHelpDeskApplication = new Application(paul, helpDeskSupport, paulDocumentHelpDeskResume, paulDocumentHelpDeskCoverLetter, statusNew)
+        //Application bryanApplication = new Application(bryan, nurseProfessional, statusOffer)
+        //Application bryanApplication2 = new Application(bryan, residentAssistant, statusRejected)
+        //Application bryanApplication3 = new Application(bryan, hrStaff, statusNew)
 
-        baseline.addAll(paulsApplication, paulsApplication2, bryanApplication, bryanApplication2, bryanApplication3)
+        baseline.addAll(paulsITApplication, paulsHelpDeskApplication)
 
 
         baseline.each {

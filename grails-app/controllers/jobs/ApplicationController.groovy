@@ -46,7 +46,21 @@ class ApplicationController {
     }
 
     @Transactional
-    def save(Application applicationInstance) {
+    def save() {
+        def applicationInstance = new Application()
+        applicationInstance.user = springSecurityService.currentUser as User
+
+        if (params.documentResume) {
+            applicationInstance.resume = Document.findByTitle(params.documentResume)
+        }
+
+        if (params.documentCoverletter) {
+            applicationInstance.coverLetter = Document.findByTitle(params.documentCoverletter)
+        }
+
+        applicationInstance.jobPost = JobPost.get(params.jobPost)
+        applicationInstance.status = Status.findByName('new')
+
         if (applicationInstance == null) {
             notFound()
             return
@@ -62,8 +76,7 @@ class ApplicationController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'application.label', default: 'Application'), applicationInstance.id])
-                redirect applicationInstance
-            }
+                redirect(action: "index")            }
             '*' { respond applicationInstance, [status: CREATED] }
         }
     }

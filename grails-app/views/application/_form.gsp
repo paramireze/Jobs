@@ -1,6 +1,7 @@
-<%@ page import="jobs.Application" %>
+<%@ page import="jobs.Document; jobs.Application" %>
 
-
+<input type="hidden" name="jobPost" value="${applicationInstance.jobPost.id}" />
+<input type="hidden" name="user" value="${user.id}" />
 <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
@@ -16,16 +17,19 @@
 <div class="form-group">
     <label for="inputEmail" class="col-sm-2 control-label">Resume</label>
     <div class="col-sm-10">
-        <g:select name="Document"
-                  from="${user.documents}" />
+        <g:select name="documentResume"
+                  from="${user.documents}"
+                    id="inputResume"
+                    />
         <g:link action="index">Add Resume</g:link>
     </div>
 </div>
 <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Cover Letter</label>
+    <label for="inputCoverLetter" class="col-sm-2 control-label">Cover Letter</label>
     <div class="col-sm-10">
-        <g:select name="Document"
-                  from="${user.documents}" />
+        <g:select name="documentCoverletter"
+                  from="${user.documents}"
+                    id="inputCoverLetter"/>
         <g:link action="index">Add Cover Letter</g:link>
     </div>
 </div>
