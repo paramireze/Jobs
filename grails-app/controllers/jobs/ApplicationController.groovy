@@ -26,7 +26,7 @@ class ApplicationController {
     }
 
     def show(Application applicationInstance) {
-        redirect(action: "index")
+        respond applicationInstance
     }
 
     def create() {
@@ -75,7 +75,7 @@ class ApplicationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'application.label', default: 'Application'), applicationInstance.id])
+                flash.message = "Application has been submitted."
                 redirect(action: "index")            }
             '*' { respond applicationInstance, [status: CREATED] }
         }
