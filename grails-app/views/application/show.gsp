@@ -8,71 +8,48 @@
 </head>
 
 <body>
-<a href="#show-application" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
-                                                                  default="Skip to content&hellip;"/></a>
-
-<div class="nav" role="navigation">
-    <ul>
-        <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label"
-                                                              args="[entityName]"/></g:link></li>
-    </ul>
-</div>
 
 <div id="show-application" class="content scaffold-show" role="main">
     <h1><g:message code="default.show.label" args="[entityName]"/></h1>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <ol class="property-list application">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Job Position</label>
+            <div class="col-sm-10">${applicationInstance?.jobPost} - ${applicationInstance?.jobPost?.job?.category}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Position</label>
+            <div class="col-sm-10">${applicationInstance?.jobPost?.employmentType}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Salary Range</label>
+            <div class="col-sm-10">${applicationInstance?.jobPost?.salaryRange}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Post Start - Post End</label>
+            <div class="col-sm-10">${applicationInstance?.jobPost?.postStart} - ${applicationInstance?.jobPost?.postEnd}</div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Status</label>
+            <div class="col-sm-10">${applicationInstance?.status}</div>
+        </div>
 
-        <g:if test="${applicationInstance?.applicationDocument}">
-            <li class="fieldcontain">
-                <span id="applicationDocument-label" class="property-label"><g:message
-                        code="application.applicationDocument.label" default="Application Document"/></span>
+    </div>
 
-                <span class="property-value" aria-labelledby="applicationDocument-label"><g:link
-                        controller="applicationDocument" action="show"
-                        id="${applicationInstance?.applicationDocument?.id}">${applicationInstance?.applicationDocument?.encodeAsHTML()}</g:link></span>
+    <g:if test="${applicationInstance?.resume}">
+        <h2>Resume</h2>
 
-            </li>
-        </g:if>
+        <div >${applicationInstance?.resume?.body.encodeAsHTML()}</div>
+    </g:if>
 
-        <g:if test="${applicationInstance?.jobPost}">
-            <li class="fieldcontain">
-                <span id="jobPost-label" class="property-label"><g:message code="application.jobPost.label"
-                                                                           default="Job Post"/></span>
+    <g:if test="${applicationInstance?.coverLetter}">
+        <h2>Cover Letter</h2>
 
-                <span class="property-value" aria-labelledby="jobPost-label"><g:link controller="jobPost" action="show"
-                                                                                     id="${applicationInstance?.jobPost?.id}">${applicationInstance?.jobPost?.encodeAsHTML()}</g:link></span>
-
-            </li>
-        </g:if>
-
-        <g:if test="${applicationInstance?.status}">
-            <li class="fieldcontain">
-                <span id="status-label" class="property-label"><g:message code="application.status.label"
-                                                                          default="Status"/></span>
-
-                <span class="property-value" aria-labelledby="status-label"><g:link controller="status" action="show"
-                                                                                    id="${applicationInstance?.status?.id}">${applicationInstance?.status?.encodeAsHTML()}</g:link></span>
-
-            </li>
-        </g:if>
-
-        <g:if test="${applicationInstance?.user}">
-            <li class="fieldcontain">
-                <span id="user-label" class="property-label"><g:message code="application.user.label"
-                                                                        default="User"/></span>
-
-                <span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show"
-                                                                                  id="${applicationInstance?.user?.id}">${applicationInstance?.user?.encodeAsHTML()}</g:link></span>
-
-            </li>
-        </g:if>
-
-    </ol>
+        <div >${applicationInstance?.coverLetter?.body.encodeAsHTML()}</div>
+    </g:if>
+<hr />
     <g:form url="[resource: applicationInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${applicationInstance}"><g:message
