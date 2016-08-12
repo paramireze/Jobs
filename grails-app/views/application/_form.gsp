@@ -15,11 +15,12 @@
     </div>
 </div>
 <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Resume</label>
+    <label for="inputResume" class="col-sm-2 control-label">Resume</label>
     <div class="col-sm-10">
         <g:select name="documentResume"
                   from="${user.documents}"
                     id="inputResume"
+           noSelection="['':'Choose a Saved Resume']"
                     />
         <g:link action="index">Add Resume</g:link>
     </div>
@@ -29,7 +30,8 @@
     <div class="col-sm-10">
         <g:select name="documentCoverletter"
                   from="${user.documents}"
-                    id="inputCoverLetter"/>
+                    id="inputCoverLetter"
+           noSelection="['':'Choose a Saved Coverletter']"/>
         <g:link action="index">Add Cover Letter</g:link>
     </div>
 </div>
