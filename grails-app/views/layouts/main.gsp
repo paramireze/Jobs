@@ -27,7 +27,7 @@
                 <ul class="nav nav-justified">
                     <li ${controllerName == 'home' && actionName == 'index' ? 'class=active' : ''}><g:link controller="home" action="index">Home</g:link></li>
                     <li ${controllerName == 'application' && actionName == 'index' ? 'class=active' : ''}><g:link controller="application" action="index">Show Applications</g:link></li>
-                    <li><a href="#">About</a></li>
+                    <li ${controllerName == 'document' && actionName == 'index' ? 'class=active' : ''}><g:link controller="document" action="index">My Documents</g:link></li>
                     <li><a href="#">Contact</a></li>
                     <li>
                         <sec:ifLoggedIn >
