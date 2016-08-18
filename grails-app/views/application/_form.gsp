@@ -18,7 +18,7 @@
     <label for="inputResume" class="col-sm-2 control-label">Resume</label>
     <div class="col-sm-10">
         <g:select name="documentResume"
-                  from="${user.documents}"
+                  from="${resumes}"
                     id="inputResume"
            noSelection="['':'Choose a Saved Resume']"
                     />
@@ -29,10 +29,10 @@
     <label for="inputCoverLetter" class="col-sm-2 control-label">Cover Letter</label>
     <div class="col-sm-10">
         <g:select name="documentCoverletter"
-                  from="${user.documents}"
+                  from="${coverLetters}"
                     id="inputCoverLetter"
            noSelection="['':'Choose a Saved Coverletter']"/>
-        <g:link action="index">Add Cover Letter</g:link>
+        <g:link controller="document" action="create" params="[userId: user.id, documentType: 'coverLetter']">Add Cover Letter</g:link>
     </div>
 </div>
 <div class="form-group">
