@@ -31,11 +31,23 @@ class ApplicationController {
 
     def create() {
         User user = springSecurityService.currentUser
+        DocumentType resume = DocumentType.findByType('Resume')
+        DocumentType coverLetter = DocumentType.findByType('Coverletter')
+
+        Collection<Document> resumes = []
+        Collection<Document> coverLetters = []
+
+        user?.documents?.each { Document document ->
+            if (document.type == resume) {
+                resumes << document
+            } else if(document.type == coverLetter) {
+                coverLetters << document
+            }
+        }
+
         Application application = new Application(params)
         application.jobPost = JobPost.get(params.jobPostId)
-        def listObject =  [applicationInstance: application, user: user]
-        Document document = new Document()
-        document.user = user
+        def listObject =  [applicationInstance: application, user: user, resumes: resumes, coverLetters: coverLetters]
 
         withFormat {
             // The view needs more fluff, other responses just get the data
