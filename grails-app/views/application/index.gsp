@@ -10,7 +10,7 @@
 <body>
 
 <div id="list-application" class="content scaffold-list" role="main">
-    <div class="jumbotron"><h1>All Applications</h1></div>
+    <div class="jumbotron"><h1>My Submitted Applications</h1></div>
     <g:if test="${flash.message}">
         <div class="bg-success" role="status">${flash.message}</div>
     </g:if>
