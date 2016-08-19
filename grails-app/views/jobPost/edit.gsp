@@ -28,7 +28,7 @@
             <g:render template="form"/>
         </fieldset>
         <fieldset>
-            <g:actionSubmit class="btn btn-block btn-info" action="update"
+            <g:actionSubmit class="btn btn-success btn-lg" action="update"
                             value="Update"/>
         </fieldset>
     </g:form>
