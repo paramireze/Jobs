@@ -42,10 +42,10 @@ class BootStrap {
 
         baseline.addAll(fullTime, partTime, lte, project, student, internship)
 
-        User paul = new User('paul', 'password', 'paul@gmail.com')
-        User bryan =  new User('bryan', 'password', 'bryan@herzing.edu')
-        User elizabeth =  new User('elizabeth', 'password', 'elizabeth@wisc.edu')
-        User arseny =  new User('arseny', 'password', 'arseny@gmail.com')
+        User paul = new User('Paul Ramirez', 'password', 'paul@gmail.com')
+        User bryan =  new User('Bryan Giant', 'password', 'bryan@herzing.edu')
+        User elizabeth =  new User('Elizabeth Stevens', 'password', 'elizabeth@wisc.edu')
+        User arseny =  new User('Arseny Hall', 'password', 'arseny@gmail.com')
 
         baseline.addAll(paul,bryan,elizabeth,arseny)
 
