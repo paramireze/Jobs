@@ -24,9 +24,14 @@
 		</label>
 		<div class="col-sm-4"><g:select id="user" name="user.id" from="${jobs.User.list()}" optionKey="id" required="" value="${documentInstance?.user?.id}" class="many-to-one form-control"/></div>
 	</div>
+
 	<div class="form-group">
-		<label class="col-sm-2 control-label"><g:message code="document.body.label" default="Body" /></label>
-		<div class="col-sm-4"><g:textField class="form-control" name="body" value="${documentInstance?.body}"/></div>
+		<label for="body" class="col-sm-2 control-label">Document Body</label>
+		<div class="col-sm-10">
+			<ckeditor:editor name="body" height="400px" width="80%">
+				${documentInstance?.body}
+			</ckeditor:editor>
+		</div>
 	</div>
 </div>
 

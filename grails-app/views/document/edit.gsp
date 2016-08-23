@@ -5,6 +5,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'document.label', default: 'Document')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<ckeditor:resources/>
 	</head>
 	<body>
 

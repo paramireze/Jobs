@@ -5,6 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'application.label', default: 'Application')}"/>
     <title><g:message code="default.edit.label" args="[entityName]"/></title>
+    <ckeditor:resources/>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form url="[resource: applicationInstance, action: 'update']" method="PUT">
+    <g:form class="form-horizontal" url="[resource: applicationInstance, action: 'update']" method="PUT">
         <g:hiddenField name="version" value="${applicationInstance?.version}"/>
         <fieldset class="form">
             <g:render template="form"/>

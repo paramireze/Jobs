@@ -30,7 +30,7 @@
 
 						<td>${fieldValue(bean: documentInstance, field: "type")}</td>
 
-						<td>${fieldValue(bean: documentInstance, field: "body")}</td>
+						<td>${raw(documentInstance?.body)}</td>
 
 					</tr>
 				</g:each>
