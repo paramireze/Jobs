@@ -12,6 +12,7 @@ class Document {
     static constraints = {
         body nullable:true
         filePath nullable:true
+        body maxSize: 20000
     }
 
     Document(DocumentType type,User user, String title, String body) {
