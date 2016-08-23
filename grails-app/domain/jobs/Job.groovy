@@ -5,15 +5,19 @@ class Job {
 
     String title
     Category category
+    String description
 
-    Job(String title, Category category) {
+    Job(String title, Category category, String description) {
         this()
         this.title = title
         this.category = category
+        this.description = description
     }
 
     static constraints = {
         replacedBy nullable: true
+        description maxValue: 2000
+        description nullable: true
     }
 
 
