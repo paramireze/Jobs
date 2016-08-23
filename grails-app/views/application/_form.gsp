@@ -22,7 +22,7 @@
                     id="inputResume"
            noSelection="['':'Choose a Saved Resume']"
                     />
-        <g:link action="index">Add Resume</g:link>
+        <g:link controller="document" action="create" params="[userId: user.id, documentType: 'resume']">Add Resume</g:link>
     </div>
 </div>
 <div class="form-group">
@@ -33,13 +33,5 @@
                     id="inputCoverLetter"
            noSelection="['':'Choose a Saved Coverletter']"/>
         <g:link controller="document" action="create" params="[userId: user.id, documentType: 'coverLetter']">Add Cover Letter</g:link>
-    </div>
-</div>
-<div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Manually Enter Resume</label>
-    <div class="col-sm-10">
-        <ckeditor:editor name="myeditor" height="400px" width="80%">
-            asdf
-        </ckeditor:editor>
     </div>
 </div>
