@@ -43,14 +43,14 @@ class BootStrap {
         baseline.addAll(fullTime, partTime, lte, project, student, internship)
 
         User paul = new User('Paul Ramirez', 'password', 'paul@gmail.com')
-        User bryan =  new User('Bryan Giant', 'password', 'bryan@herzing.edu')
+        User bryan =  new User('Bryan Smith', 'password', 'bryan@herzing.edu')
         User elizabeth =  new User('Elizabeth Stevens', 'password', 'elizabeth@wisc.edu')
         User arseny =  new User('Arseny Hall', 'password', 'arseny@gmail.com')
 
         baseline.addAll(paul,bryan,elizabeth,arseny)
 
         baseline << new UserRole(paul, hr)
-        baseline << new UserRole(bryan, hr)
+        baseline << new UserRole(bryan, user)
         baseline << new UserRole(elizabeth, user)
         baseline << new UserRole(arseny, user)
 
@@ -70,10 +70,15 @@ class BootStrap {
 
         baseline.addAll(documentTypeResume, documentTypeCoverLetter, documentTypeThankYou, documentTypeFollowUp)
 
-        def paulDocumentITResume = new Document(documentTypeResume, paul, 'ITResume', 'this is the body of the entire resume')
-        def paulDocumentHelpDeskResume = new Document(documentTypeResume, paul, 'HelpDeskResume', 'this is the body of the entire resume')
-        def paulDocumentITCoverLetter= new Document(documentTypeCoverLetter, paul, 'ITCoverLetter', 'this is the body of the entire resume number two')
-        def paulDocumentHelpDeskCoverLetter = new Document(documentTypeCoverLetter, paul, 'HelpDeskCoverLetter', 'this is the body of the entire resume number two')
+        def paulDocumentITResume = new Document(documentTypeResume, paul, 'IT Resume For Software Developer', 'this is the body of the entire resume')
+        def paulDocumentHelpDeskResume = new Document(documentTypeResume, paul, 'Help Desk Resume', 'this is the body of the entire resume')
+        def paulDocumentITCoverLetter= new Document(documentTypeCoverLetter, paul, 'IT Cover Letter for Software Developer', 'this is the body of the entire resume number two')
+        def paulDocumentHelpDeskCoverLetter = new Document(documentTypeCoverLetter, paul, 'Help Desk Cover Letter', 'this is the body of the entire resume number two')
+
+        def bryanDocumentITResume = new Document(documentTypeResume, bryan, 'IT Resume For Software Developer', 'this is the body of the entire resume')
+        def bryanDocumentHelpDeskResume = new Document(documentTypeResume, bryan, 'Help Desk Resume', 'this is the body of the entire resume')
+        def bryanDocumentITCoverLetter= new Document(documentTypeCoverLetter, bryan, 'IT Cover Letter for Software Developer', 'this is the body of the entire resume number two')
+        def bryanDocumentHelpDeskCoverLetter = new Document(documentTypeCoverLetter, bryan, 'Help Desk Cover Letter', 'this is the body of the entire resume number two')
 
         baseline.addAll(paulDocumentITResume, paulDocumentHelpDeskResume, paulDocumentITCoverLetter, paulDocumentHelpDeskCoverLetter)
 
@@ -135,8 +140,8 @@ class BootStrap {
 
         baseline.addAll(softwareDev, helpDeskSupport, softwareDev,hrStaff, nurseProfessional, residentAssistant)
 
-        Application paulsITApplication = new Application(paul, softwareDev, paulDocumentITResume, paulDocumentITCoverLetter, statusNew)
-        Application paulsHelpDeskApplication = new Application(paul, helpDeskSupport, paulDocumentHelpDeskResume, paulDocumentHelpDeskCoverLetter, statusNew)
+        Application paulsITApplication = new Application(paul, softwareDev, paulDocumentITResume, paulDocumentITCoverLetter, statusNew, 'this is another written text cover letter')
+        Application paulsHelpDeskApplication = new Application(paul, helpDeskSupport, paulDocumentHelpDeskResume, paulDocumentHelpDeskCoverLetter, statusNew, 'this is my resume')
         //Application bryanApplication = new Application(bryan, nurseProfessional, statusOffer)
         //Application bryanApplication2 = new Application(bryan, residentAssistant, statusRejected)
         //Application bryanApplication3 = new Application(bryan, hrStaff, statusNew)
