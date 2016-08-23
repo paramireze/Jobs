@@ -72,7 +72,7 @@ class DocumentController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = "<b>Success</b> Document Updated"
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'Document.label', default: 'Document'), documentInstance.id])
                 redirect documentInstance
             }
             '*' { respond documentInstance, [status: OK] }
