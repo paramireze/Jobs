@@ -21,12 +21,12 @@
 					<div class="col-sm-10"><g:link controller="user" action="show" id="${documentInstance?.user?.id}">${documentInstance?.user?.encodeAsHTML()}</g:link></div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label"><g:message code="document.filePath.label" default="File Path" /></label>
-					<div class="col-sm-10"><g:fieldValue bean="${documentInstance}" field="filePath"/></div>
+					<label class="col-sm-2 control-label"><g:message code="document.type.label" default="Type" /></label>
+					<div class="col-sm-10">${documentInstance?.type}</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label"><g:message code="document.body.label" default="Body" /></label>
-					<div class="col-sm-10">${raw(documentInstance?.body)}</div>
+					<div class="col-sm-10" style="border:1px solid black;">${raw(documentInstance?.body)}</div>
 				</div>
 			</div>
 			
