@@ -94,7 +94,16 @@ class ApplicationController {
     }
 
     def edit(Application applicationInstance) {
-        respond applicationInstance
+        User user = springSecurityService.currentUser
+
+            def listObject =  [applicationInstance: applicationInstance, user: user]
+
+        withFormat {
+            // The view needs more fluff, other responses just get the data
+            html { listObject }
+            json { render list as JSON }
+            xml { render list as XML }
+        }
     }
 
     @Transactional
