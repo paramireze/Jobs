@@ -1,11 +1,16 @@
 package jobs
 
+import org.joda.time.LocalDate
+
 class Document {
     DocumentType type
     User user
     String title
     String body
     String filePath
+
+    // Automatic timestamping
+    LocalDate dateCreated
 
 
 
@@ -21,6 +26,8 @@ class Document {
         this.user = user
         this.title = title
         this.body = body
+        this.dateCreated = LocalDate.now()
+
     }
 
 
