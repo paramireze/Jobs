@@ -83,12 +83,12 @@ class BootStrap {
         baseline.addAll(paulDocumentITResume, paulDocumentHelpDeskResume, paulDocumentITCoverLetter, paulDocumentHelpDeskCoverLetter)
 
 
-        Job jobSoftWareDeveloper = new Job('Software Developer', informationTechnology)
-        Job jobHelpDesk = new Job('Help Desk', informationTechnology)
-        Job jobFinanceSpecialist = new Job('Finance Specialist', finance)
-        Job jobHumanResourceDirector = new Job('Human Resource Director', humanResources)
-        Job jobNurse = new Job('Nurse', healthCare)
-        Job jobResidentAssistant = new Job('Resident Assistant', healthCare)
+        Job jobSoftWareDeveloper = new Job('Software Developer', informationTechnology, 'A software developer is a person concerned with facets of the software development process, including the research, design, programming, and testing of computer software')
+        Job jobHelpDesk = new Job('Help Desk', informationTechnology,'a service providing information and support to computer users, especially within a company.')
+        Job jobFinanceSpecialist = new Job('Finance Specialist', finance, 'Responsible for salary and other expenses' )
+        Job jobHumanResourceDirector = new Job('Human Resource Director', humanResources, 'Human resources are the people who make up the workforce of an organization, business sector, or economy. "Human capital" is sometimes used ...')
+        Job jobNurse = new Job('Nurse', healthCare, 'Nursing is a profession within the health care sector focused on the care of individuals, families, and communities so they may attain, maintain, or recover optimal health and quality of life.')
+        Job jobResidentAssistant = new Job('Resident Assistant', healthCare, '')
 
         baseline.addAll(jobSoftWareDeveloper, jobHelpDesk, jobFinanceSpecialist, jobHumanResourceDirector, jobNurse, jobResidentAssistant)
 

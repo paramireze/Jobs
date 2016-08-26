@@ -4,6 +4,15 @@ dataSource {
     driverClassName = "org.h2.Driver"
     username = "sa"
     password = ""
+    /*
+                pooled = true
+            dbCreate = "create-drop"
+            url = "jdbc:mysql://localhost/hrTool"
+            driverClassName = "com.mysql.jdbc.Driver"
+            username = "root"
+            password = "212121sasa"
+
+     */
 }
 hibernate {
     cache.use_second_level_cache = true
