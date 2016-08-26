@@ -96,7 +96,21 @@ class ApplicationController {
     def edit(Application applicationInstance) {
         User user = springSecurityService.currentUser
 
-            def listObject =  [applicationInstance: applicationInstance, user: user]
+        DocumentType resume = DocumentType.findByType('Resume')
+        DocumentType coverLetter = DocumentType.findByType('Coverletter')
+
+        Collection<Document> resumes = []
+        Collection<Document> coverLetters = []
+
+        user?.documents?.each { Document document ->
+            if (document.type == resume) {
+                resumes << document
+            } else if(document.type == coverLetter) {
+                coverLetters << document
+            }
+        }
+
+        def listObject =  [applicationInstance: applicationInstance, user: user, resumes: resumes, coverLetters: coverLetters]
 
         withFormat {
             // The view needs more fluff, other responses just get the data
