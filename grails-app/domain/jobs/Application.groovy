@@ -7,24 +7,24 @@ class Application {
     Status status
     Document resume
     Document coverLetter
-    String resumeText
+    String freeText
 
     static constraints = {
         jobPost nullable: false
         status nullable: false
         resume nullable: true
         coverLetter nullable: true
-        resumeText nullable: true
+        freeText nullable: true
     }
 
-    Application(User user, JobPost jobPost, Document resume, Document coverLetter, Status status, resumeText) {
+    Application(User user, JobPost jobPost, Document resume, Document coverLetter, Status status, freeText) {
         this()
         this.user = user
         this.jobPost = jobPost
         this.resume = resume
         this.coverLetter = coverLetter
         this.status = status
-        this.resumeText = resumeText
+        this.freeText = freeText
     }
 
     static belongsTo = [user:User]
