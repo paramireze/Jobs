@@ -20,7 +20,9 @@
         <g:select name="documentResume"
                   from="${resumes}"
                     id="inputResume"
-           noSelection="['':'Choose a Saved Resume']"
+                  value="${applicationInstance?.resume?.id}"
+                  optionKey="id"
+                  noSelection="['':'Choose a Saved Resume']"
                     />
         <g:link controller="document" action="create" params="[userId: user.id, documentType: 'resume']">Add Resume</g:link>
     </div>
@@ -31,7 +33,17 @@
         <g:select name="documentCoverletter"
                   from="${coverLetters}"
                     id="inputCoverLetter"
-           noSelection="['':'Choose a Saved Coverletter']"/>
+                  value="${applicationInstance?.coverLetter?.id}"
+                  optionKey="id"
+                  noSelection="['':'Choose a Saved Coverletter']"/>
         <g:link controller="document" action="create" params="[userId: user.id, documentType: 'coverLetter']">Add Cover Letter</g:link>
+    </div>
+</div>
+<div class="form-group">
+    <label for="body" class="col-sm-2 control-label">Free Text</label>
+    <div class="col-sm-10">
+        <ckeditor:editor name="body" height="400px" width="80%">
+            ${applicationInstance?.freeText}
+        </ckeditor:editor>
     </div>
 </div>
