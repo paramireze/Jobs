@@ -22,6 +22,7 @@
             <th><g:message code="application.jobPost.label" default="Job Post"/></th>
 
             <th><g:message code="application.status.label" default="Status"/></th>
+            <th><g:message code="application.dateCreated.label" default="Date Created"/></th>
 
             <th><g:message code="application.user.label" default="User"/></th>
 
@@ -34,6 +35,8 @@
                 <td><g:link controller="application" action="show" params="[id: applicationInstance.id]">${fieldValue(bean: applicationInstance, field: "jobPost")}</g:link></td>
 
                 <td>${fieldValue(bean: applicationInstance, field: "status")}</td>
+
+                <td>${fieldValue(bean: applicationInstance, field: "dateCreated")}</td>
 
                 <td>${fieldValue(bean: applicationInstance, field: "user")}</td>
 
