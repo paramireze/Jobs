@@ -42,10 +42,10 @@ class BootStrap {
 
         baseline.addAll(fullTime, partTime, lte, project, student, internship)
 
-        User paul = new User('Paul Ramirez', 'password', 'paul@gmail.com')
-        User bryan =  new User('Bryan Smith', 'password', 'bryan@herzing.edu')
-        User elizabeth =  new User('Elizabeth Stevens', 'password', 'elizabeth@wisc.edu')
-        User arseny =  new User('Arseny Hall', 'password', 'arseny@gmail.com')
+        User paul = new User('Paul Ramirez', 'password', 'paul@gmail.com', '608-445-4444', 'East Washington Ave', 'Madison', 'WI', '53703')
+        User bryan =  new User('Bryan Smith', 'password', 'bryan@herzing.edu', '608-245-5555', 'West Washington Ave', 'Madison', 'WI', '53703')
+        User elizabeth =  new User('Elizabeth Stevens', 'password', 'elizabeth@wisc.edu', '608-593-2492', 'State St.', 'Madison', 'WI', '58242')
+        User arseny =  new User('Arseny Hall', 'password', 'arseny@gmail.com', '608-345-2424', 'juniper st', 'Madison', 'WI', '53532')
 
         baseline.addAll(paul,bryan,elizabeth,arseny)
 
@@ -143,11 +143,11 @@ class BootStrap {
 
         Application paulsITApplication = new Application(paul, softwareDev, paulDocumentITResume, paulDocumentITCoverLetter, statusNew, '')
         Application paulsHelpDeskApplication = new Application(paul, helpDeskSupport, paulDocumentHelpDeskResume, paulDocumentHelpDeskCoverLetter, statusNew, '')
-        //Application bryanApplication = new Application(bryan, nurseProfessional, statusOffer)
-        //Application bryanApplication2 = new Application(bryan, residentAssistant, statusRejected)
-        //Application bryanApplication3 = new Application(bryan, hrStaff, statusNew)
+        Application bryanApplication = new Application(bryan, nurseProfessional, bryanDocumentITResume, bryanDocumentITCoverLetter, statusNew, '')
+        Application bryanApplication2 = new Application(bryan, residentAssistant, bryanDocumentHelpDeskResume, bryanDocumentHelpDeskCoverLetter, statusNew, '')
+        Application bryanApplication3 = new Application(bryan, hrStaff, bryanDocumentHelpDeskResume, bryanDocumentITCoverLetter, statusNew, '')
 
-        baseline.addAll(paulsITApplication, paulsHelpDeskApplication)
+        baseline.addAll(paulsITApplication, paulsHelpDeskApplication, bryanApplication, bryanApplication2, bryanApplication3)
 
 
         baseline.each {
