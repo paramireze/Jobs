@@ -19,6 +19,7 @@
 				<thead>
 				<tr>
 					<th>Title</th>
+					<th>Belongs To</th>
 					<th>Created</th>
 					<th>Type</th>
 					<th>Body</th>
@@ -28,6 +29,8 @@
 				<g:each in="${documentInstanceList}" status="i" var="documentInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 						<td><g:link action="show" id="${documentInstance.id}">${fieldValue(bean: documentInstance, field: "title")}</g:link></td>
+
+						<td>${documentInstance.user}</td>
 
 						<td>${fieldValue(bean: documentInstance, field: "dateCreated")}</td>
 

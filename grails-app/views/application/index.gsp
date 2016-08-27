@@ -22,7 +22,7 @@
             <th><g:message code="application.jobPost.label" default="Job Post"/></th>
 
             <th><g:message code="application.status.label" default="Status"/></th>
-            <th><g:message code="application.dateCreated.label" default="Date Created"/></th>
+            <th><g:message code="application.dateCreated.label" default="Date Submitted"/></th>
 
             <th><g:message code="application.user.label" default="User"/></th>
 
