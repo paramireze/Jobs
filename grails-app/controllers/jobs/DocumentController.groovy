@@ -11,10 +11,17 @@ class DocumentController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def springSecurityService
+
     @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Document.list(params), model: [documentInstanceCount: Document.count()]
+        User user = springSecurityService.currentUser
+        Role hr = Role.findById(2)
+        def documentInstanceList = user.hasRole(hr)? Document.findAll() : Document.findAllByUser(user)
+
+
+        [documentInstanceCount: Document.count(), documentInstanceList: documentInstanceList]
     }
 
     @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")

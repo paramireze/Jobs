@@ -18,11 +18,13 @@ class ApplicationController {
     @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        User user = springSecurityService.currentUser
+        User user = springSecurityService.currentUser as User
+
+        Role hr = Role.findById(2)
         // left off here. Check roles
-        def application = Application.findByUser(user)
-        def applications = Application.list()
-        respond Application.list(params), model: [applicationInstanceCount: Application.count()]
+        def applicationInstanceList = user.hasRole(hr)? Application.list():  Application.findAllByUser(user)
+
+        [applicationInstanceCount: Application.count(), applicationInstanceList: applicationInstanceList]
     }
 
     def show(Application applicationInstance) {
