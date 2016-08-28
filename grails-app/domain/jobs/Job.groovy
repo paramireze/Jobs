@@ -14,10 +14,14 @@ class Job {
         this.description = description
     }
 
+    static mapping = {
+        description  sqlType: 'varchar(5255)'
+    }
+
     static constraints = {
         replacedBy nullable: true
-        description maxValue: 2000
         description nullable: true
+
     }
 
 
