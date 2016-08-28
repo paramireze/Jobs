@@ -12,7 +12,7 @@
 <div id="show-application" class="content scaffold-show" role="main">
     <h1>Submitted Application For ${applicationInstance.user.username}</h1>
     <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
+        <div class="bg-success" style="margin-bottom: 20px;" role="status">${flash.message}</div>
     </g:if>
     <div class="form-horizontal">
         <div class="form-group">
@@ -35,21 +35,33 @@
             <label class="col-sm-2 control-label">Status</label>
             <div class="col-sm-10">${applicationInstance?.status}</div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Date Submitted</label>
+            <div class="col-sm-10">${applicationInstance?.dateCreated}</div>
+        </div>
 
     </div>
 
     <g:if test="${applicationInstance?.resume}">
         <h2>Resume</h2>
-
-        <div >${applicationInstance?.resume?.body.encodeAsHTML()}</div>
+        <hr />
+        ${raw(documentInstance?.body)}
+        <div >${raw(applicationInstance?.resume?.body)}</div>
     </g:if>
 
     <g:if test="${applicationInstance?.coverLetter}">
         <h2>Cover Letter</h2>
-
-        <div >${applicationInstance?.coverLetter?.body.encodeAsHTML()}</div>
+        <hr />
+        <div >${raw(applicationInstance?.coverLetter?.body)}</div>
     </g:if>
-<hr />
+
+    <g:if test="${applicationInstance?.freeText}">
+        <h2>Free Text Field</h2>
+        <hr />
+        <div >${raw(applicationInstance?.freeText)}</div>
+    </g:if>
+
+    <hr />
     <g:form url="[resource: applicationInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${applicationInstance}"><g:message
