@@ -28,6 +28,10 @@ class ApplicationController {
     }
 
     def show(Application applicationInstance) {
+        if (!applicationInstance && params?.applicationInstanceId) {
+            applicationInstance = Application.get(params.applicationInstanceId)
+        }
+
         respond applicationInstance
     }
 
@@ -89,8 +93,8 @@ class ApplicationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = "Application has been submitted."
-                redirect(action: "index")            }
+                flash.message = "Application has been Submitted."
+                redirect(action: "show", params: [applicationInstanceId: applicationInstance.id])}
             '*' { respond applicationInstance, [status: CREATED] }
         }
     }
@@ -138,7 +142,7 @@ class ApplicationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Application.label', default: 'Application'), applicationInstance.id])
+                flash.message = "Your application has been updated"
                 redirect applicationInstance
             }
             '*' { respond applicationInstance, [status: OK] }
