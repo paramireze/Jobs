@@ -4,7 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured("permitAll")
+@Secured("hasRole('ROLE_HR')")
 class UserController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -14,6 +14,7 @@ class UserController {
         respond User.list(params), model:[userInstanceCount: User.count()]
     }
 
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def show(User userInstance) {
         respond userInstance
     }
@@ -48,6 +49,7 @@ class UserController {
         respond userInstance
     }
 
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def update(User userInstance) {
         if (userInstance == null) {
             notFound()
