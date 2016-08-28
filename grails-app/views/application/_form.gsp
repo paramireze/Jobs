@@ -17,7 +17,7 @@
 <div class="form-group">
     <label for="inputResume" class="col-sm-2 control-label">Resume</label>
     <div class="col-sm-10">
-        <g:select name="documentResume"
+        <g:select name="resume"
                   from="${resumes}"
                     id="inputResume"
                   value="${applicationInstance?.resume?.id}"
@@ -30,7 +30,7 @@
 <div class="form-group">
     <label for="inputCoverLetter" class="col-sm-2 control-label">Cover Letter</label>
     <div class="col-sm-10">
-        <g:select name="documentCoverletter"
+        <g:select name="coverLetter"
                   from="${coverLetters}"
                     id="inputCoverLetter"
                   value="${applicationInstance?.coverLetter?.id}"
@@ -42,7 +42,7 @@
 <div class="form-group">
     <label for="body" class="col-sm-2 control-label">Free Text</label>
     <div class="col-sm-10">
-        <ckeditor:editor name="body" height="400px" width="80%">
+        <ckeditor:editor name="freeText" height="400px" width="80%">
             ${applicationInstance?.freeText}
         </ckeditor:editor>
     </div>
