@@ -25,10 +25,23 @@
             <h3 class="text-muted">Life Line Solutions Job Postings</h3>
             <nav>
                 <ul class="nav nav-justified">
-                    <li ${controllerName == 'home' && actionName == 'index' ? 'class=active' : ''}><g:link controller="home" action="index">Home</g:link></li>
-                    <li ${controllerName == 'application' && actionName == 'index' ? 'class=active' : ''}><g:link controller="application" action="index">Show Applications</g:link></li>
-                    <li ${controllerName == 'document' && actionName == 'index' ? 'class=active' : ''}><g:link controller="document" action="index">My Documents</g:link></li>
-                    <li><a href="#">Contact</a></li>
+                    <li ${controllerName == 'home'  ? 'class=active' : ''}><g:link controller="home" action="index">Home</g:link></li>
+                    <li ${controllerName == 'application' ? 'class=active' : ''}><g:link controller="application" action="index">Show Applications</g:link></li>
+                    <li ${controllerName == 'document'  ? 'class=active' : ''}><g:link controller="document" action="index">My Documents</g:link></li>
+                    <li ${controllerName == 'user' ? 'class=active' : ''}>
+
+                        <sec:access expression="hasRole('ROLE_HR')">
+                            <g:link controller="user"
+                                    action="index">
+                                User Accounts
+                            </g:link>
+                        </sec:access>
+                        <sec:access expression="hasRole('ROLE_USER')">
+                            <g:link controller="user" action="show" id="${sec.loggedInUserInfo([field: 'id'])}">My Account</g:link>
+                        </sec:access>
+                    </li>
+
+
                     <li>
                         <sec:ifLoggedIn >
                             <g:remoteLink class="logout" controller="logout" method="post" asynchronous="false" onSuccess="location.reload()">Logout</g:remoteLink>
