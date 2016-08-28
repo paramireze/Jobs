@@ -17,7 +17,7 @@
     <table class="table table-bordered table-hover table-striped">
         <thead>
         <tr>
-            <th>Job Position</th>
+            <th width="50%">Job Position</th>
             <th>Employement Type</th>
             <th>Salary</th>
             <th>Post End Date</th>
@@ -28,7 +28,8 @@
             <g:if test="${category.toString() == jobPost.job.category.toString()}">
                 <tr>
                     <td>
-                        <g:link controller="jobPost" action="show" params="[id: jobPost.id]">${jobPost.job}</g:link>
+                        <div><g:link controller="jobPost" action="show" params="[id: jobPost.id]">${jobPost.job}</g:link></div>
+                        <div>${jobPost.job.description}</div>
                     </td>
                     <td>${jobPost.employmentType}</td>
                     <td>${jobPost.salaryRange}</td>
