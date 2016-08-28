@@ -28,18 +28,22 @@
                     <li ${controllerName == 'home'  ? 'class=active' : ''}><g:link controller="home" action="index">Home</g:link></li>
                     <li ${controllerName == 'application' ? 'class=active' : ''}><g:link controller="application" action="index">Show Applications</g:link></li>
                     <li ${controllerName == 'document'  ? 'class=active' : ''}><g:link controller="document" action="index">My Documents</g:link></li>
-                    <li ${controllerName == 'user' ? 'class=active' : ''}>
+
 
                         <sec:access expression="hasRole('ROLE_HR')">
+                            <li ${controllerName == 'user' ? 'class=active' : ''}>
                             <g:link controller="user"
                                     action="index">
                                 User Accounts
                             </g:link>
+                            </li>
                         </sec:access>
                         <sec:access expression="hasRole('ROLE_USER')">
-                            <g:link controller="user" action="show" id="${sec.loggedInUserInfo([field: 'id'])}">My Account</g:link>
+                            <li ${controllerName == 'user' ? 'class=active' : ''}>
+                                <g:link controller="user" action="show" id="${sec.loggedInUserInfo([field: 'id'])}">My Account</g:link>
+                            </li>
                         </sec:access>
-                    </li>
+
 
 
                     <li>
