@@ -3,9 +3,7 @@ package jobs
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
 @Secured("permitAll")
 class UserController {
 
@@ -24,7 +22,6 @@ class UserController {
         respond new User(params)
     }
 
-    @Transactional
     def save(User userInstance) {
         if (userInstance == null) {
             notFound()
@@ -51,7 +48,6 @@ class UserController {
         respond userInstance
     }
 
-    @Transactional
     def update(User userInstance) {
         if (userInstance == null) {
             notFound()
@@ -74,7 +70,6 @@ class UserController {
         }
     }
 
-    @Transactional
     def delete(User userInstance) {
 
         if (userInstance == null) {
