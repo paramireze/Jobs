@@ -17,29 +17,19 @@
     <table class="table table-bordered table-hover table-striped">
         <thead>
         <tr>
-
-
             <th><g:message code="application.jobPost.label" default="Job Post"/></th>
-
             <th><g:message code="application.status.label" default="Status"/></th>
             <th><g:message code="application.dateCreated.label" default="Date Submitted"/></th>
-
             <th><g:message code="application.user.label" default="User"/></th>
-
         </tr>
         </thead>
         <tbody>
         <g:each in="${applicationInstanceList}" status="i" var="applicationInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
+                <td><g:link controller="user" action="show" id="${user.id}">${fieldValue(bean: applicationInstance, field: "user")}</g:link></td>
                 <td><g:link controller="application" action="show" params="[id: applicationInstance.id]">${fieldValue(bean: applicationInstance, field: "jobPost")}</g:link></td>
-
                 <td>${fieldValue(bean: applicationInstance, field: "status")}</td>
-
                 <td>${fieldValue(bean: applicationInstance, field: "dateCreated")}</td>
-
-                <td>${fieldValue(bean: applicationInstance, field: "user")}</td>
-
             </tr>
         </g:each>
         </tbody>
