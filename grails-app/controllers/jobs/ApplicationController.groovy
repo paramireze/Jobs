@@ -24,7 +24,7 @@ class ApplicationController {
         // left off here. Check roles
         def applicationInstanceList = user.hasRole(hr)? Application.list():  Application.findAllByUser(user)
 
-        [applicationInstanceCount: Application.count(), applicationInstanceList: applicationInstanceList]
+        [user:user, applicationInstanceCount: Application.count(), applicationInstanceList: applicationInstanceList]
     }
 
     @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
