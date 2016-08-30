@@ -26,28 +26,18 @@
             <nav>
                 <ul class="nav nav-justified">
                     <li ${controllerName == 'home'  ? 'class=active' : ''}><g:link controller="home" action="index">Home</g:link></li>
-                    <li ${controllerName == 'application' ? 'class=active' : ''}><g:link controller="application" action="index">Show Applications</g:link></li>
-                    <li ${controllerName == 'document'  ? 'class=active' : ''}><g:link controller="document" action="index">My Documents</g:link></li>
                     <sec:access expression="hasRole('ROLE_HR')">
-                        <li ${controllerName == 'user' ? 'class=active' : ''}>
-                        <g:link controller="user"
-                                action="index">
-                            User Accounts
-                        </g:link>
-                        </li>
+                        <li ${controllerName == 'application' ? 'class=active' : ''}><g:link controller="application" action="index">All Applications</g:link></li>
+                        <li ${controllerName == 'document'  ? 'class=active' : ''}><g:link controller="document" action="index">All Documents</g:link></li>
+                        <li ${controllerName == 'user' ? 'class=active' : ''}><g:link controller="user" action="index">User Accounts</g:link></li>
                     </sec:access>
                     <sec:access expression="hasRole('ROLE_USER')">
-                        <li ${controllerName == 'user' ? 'class=active' : ''}>
-                            <g:link controller="user" action="show" id="${sec.loggedInUserInfo([field: 'id'])}">My Account</g:link>
-                        </li>
+                        <li><a href="#">About Us</a></li>
+                        <li ${controllerName == 'user' ? 'class=active' : ''}><g:link controller="user" action="show" id="${sec.loggedInUserInfo([field: 'id'])}">My Account</g:link></li>
                     </sec:access>
                     <li>
-                        <sec:ifLoggedIn >
-                            <g:remoteLink class="logout" controller="logout" method="post" asynchronous="false" onSuccess="location.reload()">Logout</g:remoteLink>
-                        </sec:ifLoggedIn>
-                        <sec:ifNotLoggedIn>
-                            <g:link controller="login" action="index">Login</g:link>
-                        </sec:ifNotLoggedIn>
+                        <sec:ifLoggedIn ><g:remoteLink class="logout" controller="logout" method="post" asynchronous="false" onSuccess="location.reload()">Logout</g:remoteLink></sec:ifLoggedIn>
+                        <sec:ifNotLoggedIn><g:link controller="login" action="index">Login</g:link></sec:ifNotLoggedIn>
                     </li>
                 </ul>
             </nav>
