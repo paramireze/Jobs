@@ -20,10 +20,10 @@
 					<tr>
 					
 						<g:sortableColumn property="username" title="${message(code: 'user.username.label', default: 'Username')}" />
-					
-						<g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
-					
-						<g:sortableColumn property="accountExpired" title="${message(code: 'user.accountExpired.label', default: 'Account Expired')}" />
+
+						<g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
+
+						<g:sortableColumn property="phone" title="${message(code: 'user.phone.label', default: 'Phone')}" />
 					
 						<g:sortableColumn property="accountLocked" title="${message(code: 'user.accountLocked.label', default: 'Account Locked')}" />
 					
@@ -39,10 +39,10 @@
 					
 						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
 					
-						<td>${fieldValue(bean: userInstance, field: "password")}</td>
-					
-						<td><g:formatBoolean boolean="${userInstance.accountExpired}" /></td>
-					
+						<td>${fieldValue(bean: userInstance, field: "email")}</td>
+
+						<td>${fieldValue(bean: userInstance, field: "phone")}</td>
+
 						<td><g:formatBoolean boolean="${userInstance.accountLocked}" /></td>
 					
 						<td>${fieldValue(bean: userInstance, field: "address")}</td>
