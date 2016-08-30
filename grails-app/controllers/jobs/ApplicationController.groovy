@@ -27,6 +27,7 @@ class ApplicationController {
         [applicationInstanceCount: Application.count(), applicationInstanceList: applicationInstanceList]
     }
 
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def show(Application applicationInstance) {
         if (!applicationInstance && params?.applicationInstanceId) {
             applicationInstance = Application.get(params.applicationInstanceId)

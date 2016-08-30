@@ -23,6 +23,7 @@ class UserController {
         respond new User(params)
     }
 
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def save(User userInstance) {
         if (userInstance == null) {
             notFound()
@@ -45,6 +46,7 @@ class UserController {
         }
     }
 
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def edit(User userInstance) {
         respond userInstance
     }
