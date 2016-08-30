@@ -64,9 +64,9 @@
     <hr />
     <g:form url="[resource: applicationInstance, action: 'delete']" method="DELETE">
         <fieldset class="buttons">
-            <g:link class="edit" action="edit" resource="${applicationInstance}"><g:message
+            <g:link class="btn btn-default" action="edit" resource="${applicationInstance}"><g:message
                     code="default.button.edit.label" default="Edit"/></g:link>
-            <g:actionSubmit class="delete" action="delete"
+            <g:actionSubmit class="btn btn-danger" action="delete"
                             value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                             onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
         </fieldset>

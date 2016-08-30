@@ -14,7 +14,6 @@
 			</g:if>
 			<h1><g:fieldValue bean="${documentInstance}" field="title"/></h1>
 
-
 			<div class="form-horizontal">
 				<div class="form-group">
 					<label class="col-sm-2 control-label"><g:message code="document.user.label" default="User" /></label>
@@ -26,7 +25,7 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label"><g:message code="document.body.label" default="Body" /></label>
-					<div class="col-sm-10" style="border:1px solid black;">${raw(documentInstance?.body)}</div>
+					<div class="col-sm-10">${raw(documentInstance?.body)}</div>
 				</div>
 			</div>
 			

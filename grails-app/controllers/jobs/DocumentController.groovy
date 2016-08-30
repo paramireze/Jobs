@@ -20,6 +20,10 @@ class DocumentController {
         Role hr = Role.findById(2)
         def documentInstanceList = user.hasRole(hr)? Document.findAll() : Document.findAllByUser(user)
 
+        documentInstanceList.each { documentInstance ->
+            documentInstance.body = documentInstance.body.substring(0, 400);
+
+        }
 
         [documentInstanceCount: Document.count(), documentInstanceList: documentInstanceList]
     }
@@ -115,3 +119,4 @@ class DocumentController {
         }
     }
 }
+
