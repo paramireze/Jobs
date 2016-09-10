@@ -225,7 +225,7 @@ class BootStrap {
         baseline.addAll(bryanDocumentITResume, bryanDocumentHelpDeskResume, bryanDocumentITCoverLetter, bryanDocumentHelpDeskCoverLetter)
 
 
-        Job jobSoftWareDeveloper = new Job('Software Developer', informationTechnology, 'A software developer is a person concerned with facets of the software development process, including the research, design, programming, and testing of computer software')
+        Job jobSoftWareDeveloper = new Job('Software Developer', informationTechnology, 'Life Line Solutions at the University of Wisconsin Madison is seeking a Director of Informatics to establish the department as a premier and trusted source of informatics tools and resources. A software developer is a person concerned with facets of the software development process, including the research, design, programming, and testing of computer software')
         Job jobHelpDesk = new Job('Help Desk', informationTechnology,'a service providing information and support to computer users, especially within a company.')
         Job jobFinanceSpecialist = new Job('Finance Specialist', finance, 'Responsible for salary and other expenses' )
         Job jobHumanResourceDirector = new Job('Human Resource Director', humanResources, 'Human resources are the people who make up the workforce of an organization, business sector, or economy. "Human capital" is sometimes used ...')

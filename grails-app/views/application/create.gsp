@@ -9,7 +9,7 @@
 
 <body>
 <div id="create-application" class="content scaffold-create" role="main">
-    <div class="jumbotron"><h1>Apply for ${applicationInstance.jobPost}</h1></div>
+    <div class="jumbotron"><h2>Apply for ${applicationInstance.jobPost}</h2></div>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>

@@ -8,7 +8,7 @@
 
 <body>
 <div class="jumbotron">
-    <h1>Welcome to our Website</h1>
+    <h2>Life Line Solutions Careers Page</h2>
     <p>Please browse our site to find our current job listings.</p>
 </div>
 <g:each var="category" in="${categories}">

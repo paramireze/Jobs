@@ -9,26 +9,32 @@
 
 <body>
 <div id="show-jobPost" class="content scaffold-show" role="main">
-    <h1>
-        <sec:ifLoggedIn>
-            <sec:ifAllGranted roles="ROLE_HR">
-                <g:link controller="job" action="show"
-                        id="${jobPostInstance?.job?.id}">${jobPostInstance?.job?.encodeAsHTML()}</g:link>
-            </sec:ifAllGranted>
-            <sec:ifAllGranted roles="ROLE_USER">
-                ${jobPostInstance?.job?.encodeAsHTML()}
-            </sec:ifAllGranted>
-        </sec:ifLoggedIn>
-        </h1>
+    <div class="jumbotron">
+        <h3>
+            <sec:ifLoggedIn>
+                <sec:ifAllGranted roles="ROLE_HR">
+                    <g:link controller="job" action="show"
+                            id="${jobPostInstance?.job?.id}">${jobPostInstance?.job?.encodeAsHTML()}</g:link>
+                </sec:ifAllGranted>
+                <sec:ifAllGranted roles="ROLE_USER">
+                    ${jobPostInstance?.job?.encodeAsHTML()}
+                </sec:ifAllGranted>
+            </sec:ifLoggedIn>
+        </h3>
+        <hr />
+        <div style="margin-bottom:20px;">
+            ${jobPostInstance.job.description}
+        </div>
+        <g:link controller="application" action="create" params="[application:jobPostInstance.application, jobPostId: jobPostInstance.id]"><img width="100px" src="${resource(dir:"images", file: "ApplyOnline.png") }" /></g:link>
+    </div>
     <g:if test="${flash.message}">
         <p class="bg-success" role="status">${flash.message}</p>
     </g:if>
-    <g:link controller="application" action="create" params="[application:jobPostInstance.application, jobPostId: jobPostInstance.id]"><img width="100px" src="${resource(dir:"images", file: "ApplyOnline.png") }" /></g:link>
+
     <dl class="dl-horizontal">
         <g:if test="${jobPostInstance?.salaryRange}">
                 <dt id="salaryRange-label" class="property-label padding-right-10px"><g:message code="jobPost.salaryRange.label"
                                                                                default="Salary Range"/></dt>
-
                 <dl class="property-value" aria-labelledby="salaryRange-label"><g:fieldValue bean="${jobPostInstance}"
                                                                                                field="salaryRange"/></dl>
 
@@ -63,12 +69,7 @@
                                                                                   default="Employment Type"/></dt>
 
                 <dl class="property-value" aria-labelledby="employmentType-label">
-                    <sec:ifAllGranted roles="ROLE_HR">
-                        <g:link controller="employmentType" action="show" id="${jobPostInstance?.employmentType?.id}">${jobPostInstance?.employmentType?.encodeAsHTML()}</g:link>
-                    </sec:ifAllGranted>
-                    <sec:ifNotGranted roles="ROLE_HR">
-                        ${jobPostInstance?.employmentType?.encodeAsHTML()}
-                    </sec:ifNotGranted>
+                    ${jobPostInstance?.employmentType?.encodeAsHTML()}
                 </dl>
 
         </g:if>

@@ -10,9 +10,9 @@
 <body>
 
 <div id="list-application" class="content scaffold-list" role="main">
-    <div class="jumbotron"><h1>Submitted Applications</h1></div>
+    <h1>Submitted Applications</h1>
     <g:if test="${flash.message}">
-        <div class="bg-success" role="status">${flash.message}</div>
+        <div style="margin-bottom: 20px" class="bg-success" role="status">${flash.message}</div>
     </g:if>
     <table class="table table-bordered table-hover table-striped">
         <thead>

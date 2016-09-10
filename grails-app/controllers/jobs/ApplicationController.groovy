@@ -36,6 +36,7 @@ class ApplicationController {
         respond applicationInstance
     }
 
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def create() {
         User user = springSecurityService.currentUser
         DocumentType resume = DocumentType.findByType('Resume')
@@ -64,17 +65,17 @@ class ApplicationController {
         }
     }
 
-    @Transactional
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def save() {
         def applicationInstance = new Application()
         applicationInstance.user = springSecurityService.currentUser as User
 
-        if (params.documentResume) {
-            applicationInstance.resume = Document.findByTitle(params.documentResume)
+        if (params.resume) {
+            applicationInstance.resume = Document.get(params.resume)
         }
 
-        if (params.documentCoverletter) {
-            applicationInstance.coverLetter = Document.findByTitle(params.documentCoverletter)
+        if (params.coverLetter) {
+            applicationInstance.coverLetter = Document.get(params.coverLetter)
         }
 
         applicationInstance.jobPost = JobPost.get(params.jobPost)
@@ -100,6 +101,7 @@ class ApplicationController {
         }
     }
 
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def edit(Application applicationInstance) {
         User user = springSecurityService.currentUser
 
@@ -127,7 +129,7 @@ class ApplicationController {
         }
     }
 
-    @Transactional
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def update(Application applicationInstance) {
         if (applicationInstance == null) {
             notFound()
@@ -162,7 +164,7 @@ class ApplicationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Application.label', default: 'Application'), applicationInstance.id])
+                flash.message = "Application deleted"
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NO_CONTENT }

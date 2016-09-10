@@ -20,10 +20,10 @@ class DocumentController {
         Role hr = Role.findById(2)
         def documentInstanceList = user.hasRole(hr)? Document.findAll() : Document.findAllByUser(user)
 
-        documentInstanceList.each { documentInstance ->
-            documentInstance.body = documentInstance.body.substring(0, 400);
+        /*documentInstanceList.each { documentInstance ->
+            documentInstance.body = documentInstance?.body?.substring(0, 400);
 
-        }
+        }*/
 
         [documentInstanceCount: Document.count(), documentInstanceList: documentInstanceList]
     }
@@ -40,7 +40,7 @@ class DocumentController {
         respond new Document(params)
     }
 
-    @Transactional
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def save(Document documentInstance) {
         if (documentInstance == null) {
             notFound()
@@ -63,11 +63,12 @@ class DocumentController {
         }
     }
 
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def edit(Document documentInstance) {
         respond documentInstance
     }
 
-    @Transactional
+    @Secured("hasAnyRole('ROLE_HR','ROLE_USER')")
     def update(Document documentInstance) {
         if (documentInstance == null) {
             notFound()
